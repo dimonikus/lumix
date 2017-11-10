@@ -26,54 +26,111 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-
+<div class="header">
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <a href="index.html"><img src="images/logo.png" alt="Hair Salon Website Templates Free Download"></a>
+            </div>
+            <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
+                <div class="navigation">
+                    <div id="navigation">
+                        <ul>
+                            <li class="active"><a href="index.html" title="Home">Home</a></li>
+                            <li class="has-sub"><a href="service-list.html" title="Service List">Service List</a>
+                                <ul>
+                                    <li><a href="service-list.html" title="Service List">Service List</a></li>
+                                    <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub"><a href="blog-default.html" title="Blog ">News</a>
+                                <ul>
+                                    <li><a href="blog-default.html" title="Blog">Blog Default</a></li>
+                                    <li><a href="blog-single.html" title="Blog Single ">Blog Single</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" title="Features">Features</a>
+                                <ul>
+                                    <li><a href="testimonial.html" title="Service List">Testimonial</a></li>
+                                    <li><a href="styleguide.html" title="Service Detail">Style Guide</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html" title="Contact Us">Contact</a> </li>
+                            <li><a href="styleguide.html" title="Styleguide">styleguide</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<footer class="footer">
+<?= $content ?>
+<div class="footer">
+    <!-- footer-->
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <div class="footer-block">
+            <!-- footer block -->
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="footer-widget">
+                        <h2 class="widget-title">Salon Address</h2>
+                        <ul class="listnone contact">
+                            <li><i class="fa fa-map-marker"></i> 4958 Norman Street Los Angeles, CA 90042 </li>
+                            <li><i class="fa fa-phone"></i> +00 (800) 123-4567</li>
+                            <li><i class="fa fa-fax"></i> +00 (123) 456 7890</li>
+                            <li><i class="fa fa-envelope-o"></i> info@salon.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-widget footer-social">
+                        <!-- social block -->
+                        <h2 class="widget-title">Social Feed</h2>
+                        <ul class="listnone">
+                            <li>
+                                <a href="#"> <i class="fa fa-facebook"></i> Facebook </a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i> Google Plus</a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i> Linked In</a></li>
+                            <li>
+                                <a href="#"> <i class="fa fa-youtube"></i>Youtube</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.social block -->
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                    <div class="footer-widget widget-newsletter">
+                        <!-- newsletter block -->
+                        <h2 class="widget-title">Newsletters</h2>
+                        <p>Enter your email address to receive new patient information and other useful information right to your inbox.</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Email Address">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Subscribe</button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <!-- newsletter block -->
+                </div>
+            </div>
+            <div class="tiny-footer">
+                <!-- tiny footer block -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="copyright-content">
+                            <p>© Men Salon 2020 | all rights reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.tiny footer block -->
+        </div>
+        <!-- /.footer block -->
     </div>
-</footer>
+</div>
 
 <?php $this->endBody() ?>
 </body>
