@@ -30,16 +30,29 @@ AppAsset::register($this);
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <a href="index.html"><img src="images/logo.png" alt="Hair Salon Website Templates Free Download"></a>
+                <a href="<?= Yii::$app->homeUrl ?>">
+                    <img src="/images/logo.png" alt="Lumix Salon">
+                </a>
             </div>
             <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
                 <div class="navigation">
                     <div id="navigation">
                         <ul>
-                            <li class="active"><a href="index.html" title="Home">Home</a></li>
-                            <li class="has-sub"><a href="service-list.html" title="Service List">Service List</a>
+                            <li class="active">
+                                <a href="<?= Yii::$app->homeUrl ?>">
+                                    <?= Yii::t('app', 'Home') ?>
+                                </a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="service-list.html">
+                                    <?= Yii::t('app', 'Service List') ?>
+                                </a>
                                 <ul>
-                                    <li><a href="service-list.html" title="Service List">Service List</a></li>
+                                    <li>
+                                        <a href="service-list.html">
+                                            Service List
+                                        </a>
+                                    </li>
                                     <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>
                                 </ul>
                             </li>
@@ -55,8 +68,12 @@ AppAsset::register($this);
                                     <li><a href="styleguide.html" title="Service Detail">Style Guide</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html" title="Contact Us">Contact</a> </li>
-                            <li><a href="styleguide.html" title="Styleguide">styleguide</a> </li>
+                            <li>
+                                <a href="<?= \yii\helpers\Url::to('/site/contact') ?>" title="Contact Us">
+                                    <?= Yii::t('app', 'Contact') ?>
+                                </a>
+                            </li>
+<!--                            <li><a href="styleguide.html" title="Styleguide">styleguide</a> </li>-->
                         </ul>
                     </div>
                 </div>

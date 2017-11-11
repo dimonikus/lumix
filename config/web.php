@@ -11,10 +11,24 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'timeZone' => 'Europe/Kiev',
+//    'timeZone' => 'Europe/Kiev',
     'defaultRoute' => 'site/index',
     'language' => 'ru-RU',
     'components' => [
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+//                    'basePath' => '@app/messages',
+//                    'sourceLanguage' => 'en-US',
+//                    'sourceLanguage' => 'ru-RU',
+//                    'fileMap' => [
+//                        'app'       => 'app.php',
+//                        'app/error' => 'error.php',
+//                    ],
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'UHb8yCI6iOiXGkzsLa0BdWL5I69_FuNu',

@@ -24,6 +24,9 @@ class AppAsset extends AssetBundle
         'css/font-awesome.min.css',
     ];
     public $js = [
+        'js/menumaker.js',
+        'js/jquery.sticky.js',
+        'js/sticky-header.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
