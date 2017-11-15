@@ -12,6 +12,7 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 
 AppAsset::register($this);
+$assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ AppAsset::register($this);
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                <div class="logo"> <a href="<?= Yii::$app->homeUrl ?>"><img src="/images/logo.png" alt=""></a> </div>
+                <div class="logo"> <a href="<?= Yii::$app->homeUrl ?>"><img src="<?=$assetPath?>/images/logo.png" alt=""></a> </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="row">
@@ -95,12 +96,17 @@ AppAsset::register($this);
     </div>
 </div>
 <?= $content ?>
+<a href="#0" class="cd-top" title="Go to top">Top</a>
 <div class="footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="footer-widget bg-white pinside30 mb30">
-                    <div class="logo mb30"> <a href="/images/logo.png"><img src="/images/logo.png" class="img-responsive" alt=""></a> </div>
+                    <div class="logo mb30">
+                        <a href="<?=$assetPath?>/images/logo.png">
+                            <img src="<?=$assetPath?>/images/logo.png" class="img-responsive" alt="">
+                        </a>
+                    </div>
                     <p class="mb30">Cras ut mauris fermentum pulvinar us utempus magivamus molestie molestie pulvin estibulum acvehicula erurabitur arcuornare ipsum.</p>
                     <div class="footer-social"><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-google-plus"></i></a></div>
                 </div>
@@ -159,7 +165,6 @@ AppAsset::register($this);
         </div>
     </div>
 </div>
-<a href="#" class="cd-top" title="Go to top">Top</a>
 <?php $this->endBody() ?>
 </body>
 </html>
