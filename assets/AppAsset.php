@@ -20,13 +20,24 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/style.css',
+        'css/imagehover.min.css',
+        'css/owl.theme.css',
+        'css/owl.carousel.css',
         'css/font-awesome.min.css',
+        'css/style.css',
+//        'css/animsition.min.css',
+        'css/fontello.css',
     ];
     public $js = [
         'js/menumaker.js',
+        'js/animsition.js',
+        'js/animsition-script.js',
         'js/jquery.sticky.js',
-        'js/sticky-header.js'
+        'js/sticky-header.js',
+        'js/owl.carousel.min.js',
+        'js/testimonial-carousel.js',
+        "js/back-to-top.js",
+//        "js/bootstrap.min.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',
