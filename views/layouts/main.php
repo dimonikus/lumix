@@ -67,7 +67,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="navigation" id="navigation">
+                <div class="navigation align-center" id="navigation">
                     <ul>
                         <li class="active">
                             <a href="<?= Yii::$app->homeUrl ?>" title="Home" class="animsition-link">
@@ -75,7 +75,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                             </a>
                         </li>
                         <li>
-                            <a href="service-list.html" title="Service List" class="animsition-link">
+                            <a href="<?= Url::to('/service') ?>" title="Service List" class="animsition-link">
                                 <?= Yii::t('app', 'Service List') ?>
                             </a>
                             <ul>
@@ -114,7 +114,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="footer-widget bg-white pinside30 mb30">
                     <div class="logo mb30">
-                        <a href="<?=$assetPath?>/images/logo.png">
+                        <a href="<?= Yii::$app->getHomeUrl() ?>">
                             <img src="<?=$assetPath?>/images/logo.png" class="img-responsive" alt="">
                         </a>
                     </div>

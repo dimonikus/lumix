@@ -399,8 +399,18 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
 #navigation li:hover > ul > li { height: 35px; }
 #navigation ul ul ul { margin-left: 100%; top: 0; }
 #navigation.align-right ul ul ul { margin-left: 0; margin-right: 100%; }
-#navigation ul ul li a { border-bottom: 1px solid rgba(150, 150, 150, 0.15); padding: 24px; width: 170px; font-size: 13px;
- text-decoration: none; color: #fff; font-weight: 600; background: #d30050; text-transform: uppercase; }
+
+#navigation ul ul li a {
+    border-bottom: 1px solid rgba(150, 150, 150, 0.15);
+    padding: 15px;
+    width: 170px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #fff;
+    /*font-weight: 600;*/
+    background: #d30050;
+    /*text-transform: uppercase;*/
+}
 #navigation ul ul li:last-child > a, #navigation ul ul li.last-item > a { border-bottom: 0; }
 #navigation ul ul li:hover > a, #navigation ul ul li a:hover { color: #ffffff; }
 #navigation ul ul li.has-sub > a:after { position: absolute; top: 16px; right: 11px; width: 8px; height: 2px; display: block;

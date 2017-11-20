@@ -76,7 +76,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-//                'dashboard' => 'site/index',
+                'service' => 'service/index',
             ],
         ],
     ],

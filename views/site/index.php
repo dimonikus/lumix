@@ -1,5 +1,5 @@
 <?php
-
+use \yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -13,7 +13,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                 <div class="hero-caption">
                     <h1 class="hero-title">Looking Professional Beauty Salon?</h1>
                     <p class="hero-text">Beauty salon provide you wide range of beauty services like Facial, hair style, waxing, makeup etc...Beauty salon provide you wide range of beauty services like Facial, hair style, waxing, makeup etc...</p>
-                    <a href="service-list.html" class="btn btn-default">
+                    <a href="<?= Url::to('/service') ?>" class="btn btn-default">
                         <?= Yii::t('app', 'view services') ?>
                     </a>
                 </div>
@@ -28,7 +28,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                 <div class="section-title">
                     <h1 class="heading-line">Beauty Salon Services</h1>
                     <p class="mb40">Dolor sit amet consectetur adipiscing uspendisse volutpat feliscommodo bibendum odionunc tincidu.</p>
-                    <a href="service-list.html" class="btn btn-default">
+                    <a href="<?= Url::to('/service') ?>" class="btn btn-default">
                         <?= Yii::t('app', 'view services') ?>
                     </a>
                 </div>

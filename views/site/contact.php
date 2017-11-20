@@ -10,6 +10,7 @@ use yii\captcha\Captcha;
 
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
+$assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 ?>
 <div class="page-header page-caption">
     <div class="container">
@@ -25,7 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 bg-primary pinside40">
                 <div class="contact-info">
-                    <div class="logo mb40"> <a href="index.html"><img src="/images/logo-white.png" class="img-responsive" alt=""></a> </div>
+                    <div class="logo mb40">
+                        <a href="<?= Yii::$app->getHomeUrl() ?>">
+                            <img src="<?= $assetPath ?>/images/logo-white.png" class="img-responsive" alt="">
+                        </a>
+                    </div>
                     <ul class="listnone">
                         <li><i class="icon-placeholder icon-secondary icon-2x"></i>
                             <address>
@@ -118,7 +123,7 @@ $this->params['breadcrumbs'][] = $this->title;
             scrollwheel: false,
 
         });
-        var image = '/images/map-pin.png';
+        var image = '<?= $assetPath ?>/images/map-pin.png';
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
