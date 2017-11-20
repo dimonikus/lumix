@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+$assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 ?>
 <div class="hero-section">
     <!-- navigation -->
@@ -12,7 +13,10 @@ $this->title = 'My Yii Application';
                 <div class="hero-caption">
                     <h1 class="hero-title">Looking Professional Beauty Salon?</h1>
                     <p class="hero-text">Beauty salon provide you wide range of beauty services like Facial, hair style, waxing, makeup etc...Beauty salon provide you wide range of beauty services like Facial, hair style, waxing, makeup etc...</p>
-                    <a href="service-list.html" class="btn btn-default">view services</a> </div>
+                    <a href="service-list.html" class="btn btn-default">
+                        <?= Yii::t('app', 'view services') ?>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -24,7 +28,10 @@ $this->title = 'My Yii Application';
                 <div class="section-title">
                     <h1 class="heading-line">Beauty Salon Services</h1>
                     <p class="mb40">Dolor sit amet consectetur adipiscing uspendisse volutpat feliscommodo bibendum odionunc tincidu.</p>
-                    <a href="service-list.html" class="btn btn-default">view services</a> </div>
+                    <a href="service-list.html" class="btn btn-default">
+                        <?= Yii::t('app', 'view services') ?>
+                    </a>
+                </div>
             </div>
             <div class="col-lg-offest-1 col-lg-8 col-md-offset-1 col-md-8 col-sm-12 col-xs-12">
                 <div class="row">
@@ -33,8 +40,11 @@ $this->title = 'My Yii Application';
                             <div class="service-caption pinside40">
                                 <h2 class="service-title"><a href="service-list.html" class="title">Hair Style</a></h2>
                                 <p class="mb40">Cras auctor laoreet duid temsem cursus sedenean elementumest vitae.</p>
-                                <a href="service-list.html" class="btn-link">Read More</a> </div>
-                            <div class="service-img"> <img src="images/service-1.jpg" class="img-responsive" alt=""> </div>
+                                <a href="service-list.html" class="btn-link">
+                                    <?= Yii::t('app', 'Read More') ?>
+                                </a>
+                            </div>
+                            <div class="service-img"> <img src="<?= $assetPath ?>/images/service-1.jpg" class="img-responsive" alt=""> </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -42,8 +52,11 @@ $this->title = 'My Yii Application';
                             <div class="service-caption pinside40">
                                 <h2 class="service-title"><a href="service-list.html" class="title">Makeup</a></h2>
                                 <p class="mb40">Maecenas sitamet venenatis nulla eget lobortis loreduis lorem eget nulla.</p>
-                                <a href="service-list.html" class="btn-link">Read More</a> </div>
-                            <div class="service-img"> <img src="images/service-2.jpg" class="img-responsive" alt=""> </div>
+                                <a href="service-list.html" class="btn-link">
+                                    <?= Yii::t('app', 'Read More') ?>
+                                </a>
+                            </div>
+                            <div class="service-img"> <img src="<?= $assetPath ?>/images/service-2.jpg" class="img-responsive" alt=""> </div>
                         </div>
                     </div>
                 </div>
@@ -53,7 +66,7 @@ $this->title = 'My Yii Application';
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="about-img"><img src="images/about-img.jpg" class="img-responsive" alt=""></div>
+                <div class="about-img"><img src="<?= $assetPath ?>/images/about-img.jpg" class="img-responsive" alt=""></div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                 <div class="row">
@@ -64,13 +77,17 @@ $this->title = 'My Yii Application';
                             </div>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elited pharetra odio vitae velit tristique porta eu et duienean venenatis darius commodo dolor mauris gravida magna vitae lorem one consectetur quam estid estenean enim ante vehicula non mauris massa.</p>
                             <p>Soremun duienean venenatis diam quis varius commodo dolor mauris gravida magna vitae lorem one consectetur quam estid estenean enim ante vehicula non.</p>
-                            <div class="text-right"><a href="#" class="btn-link">Read More</a></div>
+                            <div class="text-right">
+                                <a href="#" class="btn-link">
+                                    <?= Yii::t('app', 'Read More') ?>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="pdl40">
                             <h4 class="about-name mb10">- Auenda Odell <span class="about-meta">( CEO )</span></h4>
-                            <div class="about-sign"><img src="images/about-sign.png" class="img-responsive" alt=""> </div>
+                            <div class="about-sign"><img src="<?= $assetPath ?>/images/about-sign.png" class="img-responsive" alt=""> </div>
                         </div>
                     </div>
                 </div>
@@ -104,7 +121,7 @@ $this->title = 'My Yii Application';
                                 </div>
                             </div>
                             <div class="col-lg-offset-1 col-lg-4 col-md-offset-1  col-md-4 col-sm-5 col-xs-12">
-                                <div class="testimonial-img"><img src="images/testimonial-1.jpg" class="img-responsive" alt=""></div>
+                                <div class="testimonial-img"><img src="<?= $assetPath ?>/images/testimonial-1.jpg" class="img-responsive" alt=""></div>
                             </div>
                         </div>
                     </div>
@@ -121,7 +138,7 @@ $this->title = 'My Yii Application';
                                 </div>
                             </div>
                             <div class="col-lg-offset-1 col-lg-4 col-md-offset-1  col-md-4 col-sm-5 col-xs-12">
-                                <div class="testimonial-img"><img src="images/testimonial-2.jpg" class="img-responsive" alt=""></div>
+                                <div class="testimonial-img"><img src="<?= $assetPath ?>/images/testimonial-2.jpg" class="img-responsive" alt=""></div>
                             </div>
                         </div>
                     </div>
@@ -138,7 +155,7 @@ $this->title = 'My Yii Application';
                                 </div>
                             </div>
                             <div class="col-lg-offset-1 col-lg-4 col-md-offset-1  col-md-4 col-sm-5 col-xs-12">
-                                <div class="testimonial-img"><img src="images/testimonial-3.jpg" class="img-responsive" alt=""></div>
+                                <div class="testimonial-img"><img src="<?= $assetPath ?>/images/testimonial-3.jpg" class="img-responsive" alt=""></div>
                             </div>
                         </div>
                     </div>
@@ -163,18 +180,18 @@ $this->title = 'My Yii Application';
             <div class="col-lg-offest-1 col-lg-8 col-md-offset-1 col-md-8 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 co l-xs-12">
-                        <div class="portfoio-img"> <a href="#" class="imghover"><img src="images/portfolio-1.jpg" class="img-responsive" alt=""></a> </div>
+                        <div class="portfoio-img"> <a href="#" class="imghover"><img src="<?= $assetPath ?>/images/portfolio-1.jpg" class="img-responsive" alt=""></a> </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="portfoio-img"> <a href="#" class="imghover"><img src="images/portfolio-2.jpg" class="img-responsive" alt=""></a> </div>
+                        <div class="portfoio-img"> <a href="#" class="imghover"><img src="<?= $assetPath ?>/images/portfolio-2.jpg" class="img-responsive" alt=""></a> </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div class="portfoio-img"> <a href="#" class="imghover"><img src="images/portfolio-3.jpg" class="img-responsive" alt=""></a> </div>
+                <div class="portfoio-img"> <a href="#" class="imghover"><img src="<?= $assetPath ?>/images/portfolio-3.jpg" class="img-responsive" alt=""></a> </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="portfoio-img"> <a href="#" class="imghover"><img src="images/portfolio-4.jpg" class="img-responsive" alt=""></a> </div>
+                <div class="portfoio-img"> <a href="#" class="imghover"><img src="<?= $assetPath ?>/images/portfolio-4.jpg" class="img-responsive" alt=""></a> </div>
             </div>
         </div>
     </div>
@@ -204,7 +221,7 @@ $this->title = 'My Yii Application';
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="team-block mb30">
                             <figure class="imghvr-fade">
-                                <div class="team-img"><img src="images/team-1.jpg" class="img-responsive" alt=""></div>
+                                <div class="team-img"><img src="<?= $assetPath ?>/images/team-1.jpg" class="img-responsive" alt=""></div>
                                 <figcaption>
                                     <div class="team-info">
                                         <h2 class="team-name">Connie Jenkins</h2>
@@ -217,7 +234,7 @@ $this->title = 'My Yii Application';
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="team-block mb30">
                             <figure class="imghvr-fade">
-                                <div class="team-img"><img src="images/team-2.jpg" class="img-responsive" alt=""></div>
+                                <div class="team-img"><img src="<?= $assetPath ?>/images/team-2.jpg" class="img-responsive" alt=""></div>
                                 <figcaption>
                                     <div class="team-info">
                                         <h2 class="team-name">Ethel Kinney</h2>
@@ -241,7 +258,10 @@ $this->title = 'My Yii Application';
                         <h1 class="heading-line post-title"><a href="blog-default.html" class="title">Ask Your Wedding Stylist for These Fall Hair Trends</a></h1>
                         <div class="meta"><span class="meta-date">25  December, 2017</span></div>
                         <p>Lorem ipsum dolor sitameconsectetur adipiscing uspendisse volutpatfelis...</p>
-                        <a href="blog-default.html" class="btn-link">Read More </a></div>
+                        <a href="blog-default.html" class="btn-link">
+                            <?= Yii::t('app', 'Read More') ?>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -250,16 +270,30 @@ $this->title = 'My Yii Application';
                         <h1 class="heading-line post-title"><a href="blog-default.html" class="title">The Easiest Way to Remove Long-Wearing Matte Lipstick</a></h1>
                         <div class="meta"><span class="meta-date">24  December, 2017</span></div>
                         <p>Vivamus lorem tellu cursus eudui varius condimentum nuncm ultrices...</p>
-                        <a href="blog-default.html" class="btn-link">Read More </a></div>
+                        <a href="blog-default.html" class="btn-link">
+                            <?= Yii::t('app', 'Read More') ?>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="post-holder bg-white pinside40 mb30">
                     <div class="post-content">
-                        <h1 class="heading-line post-title"><a href="blog-default.html" class="title">Secrets to Get Your Blush to Look as Natural as Possible</a></h1>
-                        <div class="meta"><span class="meta-date">23  December, 2017</span></div>
+                        <h1 class="heading-line post-title">
+                            <a href="blog-default.html" class="title">
+                                Secrets to Get Your Blush to Look as Natural as Possible
+                            </a>
+                        </h1>
+                        <div class="meta">
+                            <span class="meta-date">
+                                23  December, 2017
+                            </span>
+                        </div>
                         <p>Cras pharetra turpis eget egesta poneces sitamet purus uluctus urnau...</p>
-                        <a href="blog-default.html" class="btn-link">Read More </a></div>
+                        <a href="blog-default.html" class="btn-link">
+                            <?= Yii::t('app', 'Read More') ?>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -11,4 +11,8 @@ return [
 'send message' => 'Отправить',
 'Contact Form' => 'Форма обратной связи',
 'Contact Info' => 'Контактная информация',
+'view services' => 'все услуги',
+'Read More' => 'подробнее',
+'Opening Timing' => 'мы открыты',
+'Need any help' => 'Хотите записаться',
 ];

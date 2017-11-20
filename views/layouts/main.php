@@ -31,20 +31,28 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                <div class="logo"> <a href="<?= Yii::$app->homeUrl ?>"><img src="<?=$assetPath?>/images/logo.png" alt=""></a> </div>
+                <div class="logo">
+                    <a href="<?= Yii::$app->homeUrl ?>">
+                        <img src="<?=$assetPath?>/images/logo.png" alt="">
+                    </a>
+                </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <div class="call-block">
-                            <h3 class="call-no">+1 (800) 123 - 456</h3>
-                            <p class="call-text">Need any help?</p>
+                            <h3 class="call-no">+38 (068) 140 33 37</h3>
+                            <p class="call-text">
+                                <?= Yii::t('app', 'Need any help') ?>?
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
                         <div class="time-block">
-                            <h3 class="time">Mon-Sun : 10am:07pm</h3>
-                            <p class="call-text">Opening Timing</p>
+                            <h3 class="time">Пн-Вс: с 9:00 до 20:00</h3>
+                            <p class="call-text">
+                                <?= Yii::t('app', 'Opening Timing') ?>
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
@@ -66,7 +74,10 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                                 <?= Yii::t('app', 'Home') ?>
                             </a>
                         </li>
-                        <li><a href="service-list.html" title="Service List" class="animsition-link">Service List</a>
+                        <li>
+                            <a href="service-list.html" title="Service List" class="animsition-link">
+                                <?= Yii::t('app', 'Service List') ?>
+                            </a>
                             <ul>
                                 <li><a href="service-list.html" title="Service List">Service List</a></li>
                                 <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>
