@@ -107,7 +107,6 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
     </div>
 </div>
 <?= $content ?>
-<a href="#0" class="cd-top" title="Go to top">Top</a>
 <div class="footer">
     <div class="container">
         <div class="row">
@@ -176,6 +175,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
         </div>
     </div>
 </div>
+<a href="#0" class="cd-top" title="Go to top">Top</a>
 <?php $this->endBody() ?>
 </body>
 </html>
