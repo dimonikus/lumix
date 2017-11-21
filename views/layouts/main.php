@@ -9,8 +9,10 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
+$assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -23,59 +25,82 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="animsition">
 <?php $this->beginBody() ?>
-
 <div class="header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <a href="<?= Yii::$app->homeUrl ?>">
-                    <img src="/images/logo.png" alt="Lumix Salon">
-                </a>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="logo">
+                    <a href="<?= Yii::$app->homeUrl ?>">
+                        <img src="<?=$assetPath?>/images/logo.png" alt="">
+                    </a>
+                </div>
             </div>
-            <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
-                <div class="navigation">
-                    <div id="navigation">
-                        <ul>
-                            <li class="active">
-                                <a href="<?= Yii::$app->homeUrl ?>">
-                                    <?= Yii::t('app', 'Home') ?>
-                                </a>
-                            </li>
-                            <li class="has-sub">
-                                <a href="service-list.html">
-                                    <?= Yii::t('app', 'Service List') ?>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="service-list.html">
-                                            Service List
-                                        </a>
-                                    </li>
-                                    <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-sub"><a href="blog-default.html" title="Blog ">News</a>
-                                <ul>
-                                    <li><a href="blog-default.html" title="Blog">Blog Default</a></li>
-                                    <li><a href="blog-single.html" title="Blog Single ">Blog Single</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" title="Features">Features</a>
-                                <ul>
-                                    <li><a href="testimonial.html" title="Service List">Testimonial</a></li>
-                                    <li><a href="styleguide.html" title="Service Detail">Style Guide</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="<?= \yii\helpers\Url::to('/site/contact') ?>" title="Contact Us">
-                                    <?= Yii::t('app', 'Contact') ?>
-                                </a>
-                            </li>
-<!--                            <li><a href="styleguide.html" title="Styleguide">styleguide</a> </li>-->
-                        </ul>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                        <div class="call-block">
+                            <h3 class="call-no">+38 (068) 140 33 37</h3>
+                            <p class="call-text">
+                                <?= Yii::t('app', 'Need any help') ?>?
+                            </p>
+                        </div>
                     </div>
+                    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
+                        <div class="time-block">
+                            <h3 class="time">Пн-Вс: с 9:00 до 20:00</h3>
+                            <p class="call-text">
+                                <?= Yii::t('app', 'Opening Timing') ?>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+                        <div class="top-btn"> <a href="contact.html" class="btn btn-default">Make Appointment</a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navigation-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="navigation align-center" id="navigation">
+                    <ul>
+                        <li class="active">
+                            <a href="<?= Yii::$app->homeUrl ?>" title="Home" class="animsition-link">
+                                <?= Yii::t('app', 'Home') ?>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to('/service') ?>" title="Service List" class="animsition-link">
+                                <?= Yii::t('app', 'Service List') ?>
+                            </a>
+                            <ul>
+                                <li><a href="service-list.html" title="Service List">Service List</a></li>
+                                <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="blog-default.html" title="Blog" class="animsition-link">News</a>
+                            <ul>
+                                <li><a href="blog-default.html" title="Blog" class="animsition-link">Blog Default</a></li>
+                                <li><a href="blog-single.html" title="Blog Single" class="animsition-link">Blog Single</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="testimonial.html" title="Features" class="animsition-link">Features</a>
+                            <ul>
+                                <li><a href="testimonial.html" title="Testimonial" class="animsition-link">Testimonial</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="pricing.html" title="Pricing" class="animsition-link">Pricing</a></li>
+                        <li>
+                            <a href="<?= Url::to('/site/contact') ?>" title="Contact Us" class="animsition-link">
+                                <?= Yii::t('app', 'Contact') ?>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -83,72 +108,74 @@ AppAsset::register($this);
 </div>
 <?= $content ?>
 <div class="footer">
-    <!-- footer-->
     <div class="container">
-        <div class="footer-block">
-            <!-- footer block -->
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="footer-widget">
-                        <h2 class="widget-title">Salon Address</h2>
-                        <ul class="listnone contact">
-                            <li><i class="fa fa-map-marker"></i> 4958 Norman Street Los Angeles, CA 90042 </li>
-                            <li><i class="fa fa-phone"></i> +00 (800) 123-4567</li>
-                            <li><i class="fa fa-fax"></i> +00 (123) 456 7890</li>
-                            <li><i class="fa fa-envelope-o"></i> info@salon.com</li>
-                        </ul>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="footer-widget bg-white pinside30 mb30">
+                    <div class="logo mb30">
+                        <a href="<?= Yii::$app->getHomeUrl() ?>">
+                            <img src="<?=$assetPath?>/images/logo.png" class="img-responsive" alt="">
+                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="footer-widget footer-social">
-                        <!-- social block -->
-                        <h2 class="widget-title">Social Feed</h2>
-                        <ul class="listnone">
-                            <li>
-                                <a href="#"> <i class="fa fa-facebook"></i> Facebook </a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i> Google Plus</a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i> Linked In</a></li>
-                            <li>
-                                <a href="#"> <i class="fa fa-youtube"></i>Youtube</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.social block -->
-                </div>
-                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                    <div class="footer-widget widget-newsletter">
-                        <!-- newsletter block -->
-                        <h2 class="widget-title">Newsletters</h2>
-                        <p>Enter your email address to receive new patient information and other useful information right to your inbox.</p>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Email Address">
-                            <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Subscribe</button>
-                            </span>
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                    <!-- newsletter block -->
+                    <p class="mb30">Cras ut mauris fermentum pulvinar us utempus magivamus molestie molestie pulvin estibulum acvehicula erurabitur arcuornare ipsum.</p>
+                    <div class="footer-social"><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-google-plus"></i></a></div>
                 </div>
             </div>
-            <div class="tiny-footer">
-                <!-- tiny footer block -->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="copyright-content">
-                            <p>© Men Salon 2020 | all rights reserved</p>
-                        </div>
-                    </div>
+            <div class="col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-6 col-xs-12">
+                <div class="footer-widget footer-contact">
+                    <h2 class="footer-title">Contact Info</h2>
+                    <ul class="listnone">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-2"><i class="fa fa-phone"></i></div>
+                                <div class="col-md-10">
+                                    <h4 class="call-no"><a href="contact.html">+1 (800) 123 - 456</a></h4>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-md-2"><i class="fa fa-envelope-o"></i></div>
+                                <div class="col-md-10">
+                                    <h4 class="mail-text"><a href="contact.html">beautysalon@gmail.com</a></h4>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-md-2"><i class="fa fa-clock-o"></i></div>
+                                <div class="col-md-10">
+                                    <h4 class="time-text"><a href="contact.html">Mon-sun : 10am : 07pm</a></h4>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <!-- /.tiny footer block -->
+            <div class="col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-6 col-xs-12">
+                <div class="footer-widget">
+                    <h2 class="footer-title">Quick Links</h2>
+                    <ul class="listnone">
+                        <li><i class="fa fa-caret-right"></i><a href="index.html">Home</a></li>
+                        <li><i class="fa fa-caret-right"></i><a href="service-list.html">Services</a></li>
+                        <li><i class="fa fa-caret-right"></i><a href="testimonial.html">Testimonial</a></li>
+                        <li><i class="fa fa-caret-right"></i><a href="blog-default.html">News</a></li>
+                        <li><i class="fa fa-caret-right"></i><a href="pricing.html">Pricing</a></li>
+                        <li><i class="fa fa-caret-right"></i><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <!-- /.footer block -->
     </div>
 </div>
-
+<div class="tiny-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Copyrights@2017 | All Rights Reserve</div>
+        </div>
+    </div>
+</div>
+<a href="#0" class="cd-top" title="Go to top">Top</a>
 <?php $this->endBody() ?>
 </body>
 </html>

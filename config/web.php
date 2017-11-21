@@ -29,6 +29,18 @@ $config = [
                 ],
             ],
         ],
+        'assetManager' => [
+            'linkAssets' => true,
+            'bundles' => [
+                'dosamigos\google\maps\MapAsset' => [
+                    'options' => [
+                        'key' => 'AIzaSyBNiaQMazF0ymQJhWFzaWWEEg-JnpNLZ04',
+                        'language' => 'ru',
+                        'version' => '3.1.18'
+                    ]
+                ]
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'UHb8yCI6iOiXGkzsLa0BdWL5I69_FuNu',
@@ -64,7 +76,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-//                'dashboard' => 'site/index',
+                'service' => 'service/index',
             ],
         ],
     ],
