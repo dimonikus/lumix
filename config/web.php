@@ -49,7 +49,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\modules\admin\models\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -78,6 +78,11 @@ $config = [
             'rules' => [
                 'service' => 'service/index',
             ],
+        ],
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\AdminModule',
         ],
     ],
     'params' => $params,
