@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -34,7 +35,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Service();
+        $model->index = 5;
+
+        return $this->render('index', ['model' => $model]);
     }
 
 
