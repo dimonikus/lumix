@@ -16,7 +16,6 @@ class DefaultController extends AdminController
     public function actionIndex()
     {
 
-        var_dump($this->layout);
         return $this->render('index');
     }
 }

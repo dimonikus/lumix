@@ -38,7 +38,11 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="service-block mb60 outline">
                             <div class="service-caption pinside40">
-                                <h2 class="service-title"><a href="service-list.html" class="title">Hair Style</a></h2>
+                                <h2 class="service-title">
+                                    <a href="service-list.html" class="title">
+                                        Hair Style
+                                    </a>
+                                </h2>
                                 <p class="mb40">Cras auctor laoreet duid temsem cursus sedenean elementumest vitae.</p>
                                 <a href="service-list.html" class="btn-link">
                                     <?= Yii::t('app', 'Read More') ?>
