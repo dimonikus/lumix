@@ -79,8 +79,9 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                                 <?= Yii::t('app', 'Service List') ?>
                             </a>
                             <ul>
-                                <li><a href="service-list.html" title="Service List">Service List</a></li>
-                                <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>
+                                <?= \app\modules\admin\models\Service::getMenuItem() ?>
+<!--                                <li><a href="service-list.html" title="Service List">Service List</a></li>-->
+<!--                                <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>-->
                             </ul>
                         </li>
                         <li><a href="blog-default.html" title="Blog" class="animsition-link">News</a>
