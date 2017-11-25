@@ -21,6 +21,7 @@ class m171123_012825_create_service_table extends Migration
             'short_img' => $this->string(),
             'price_img' => $this->string(),
             'main_img' => $this->string(),
+            'url' => $this->string(64)->notNull()->unique(),
             'index' => $this->integer()->notNull(),
         ]);
     }

@@ -4,12 +4,14 @@ namespace app\modules\admin\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\BaseInflector;
 
 /**
  * This is the model class for table "service".
  *
  * @property integer $id
  * @property string $name
+ * @property string $url
  * @property string $short_description
  * @property string $price_description
  * @property string $description
@@ -37,9 +39,9 @@ class Service extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['description'], 'string'],
             [['index'], 'integer'],
-            [['name'], 'string', 'max' => 64],
+            [['name', 'url'], 'string', 'max' => 64],
             [['short_description', 'price_description', 'short_img', 'price_img', 'main_img'], 'string', 'max' => 255],
-            [['name'], 'unique'],
+            [['name', 'url'], 'unique'],
             ['index', 'default', 'value' => 100],
         ];
     }
@@ -52,6 +54,7 @@ class Service extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Название услуги',
+            'url' => 'url',
             'short_description' => 'Краткое описание',
             'price_description' => 'Краткое описание прайса',
             'description' => 'Описание',
@@ -64,9 +67,10 @@ class Service extends \yii\db\ActiveRecord
 
     public static function getMenuItem(){
         $menu = '';
-        $items = ArrayHelper::map(self::find()->orderBy('index asc')->all(), 'id', 'name');
-        foreach ($items as $id => $name) {
-            $menu .= '<li><a href="blog-default.html" class="animsition-link">'.$name.'</a></li>';
+        $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
+        $items = ArrayHelper::map(self::find()->orderBy('index asc')->all(), 'url', 'name');
+        foreach ($items as $url=> $name) {
+            $menu .= '<li><a href="'.$servicePath.$url.'" class="animsition-link">'.$name.'</a></li>';
         }
 
         return $menu;
@@ -79,5 +83,15 @@ class Service extends \yii\db\ActiveRecord
     public static function find()
     {
         return new ServiceQuery(get_called_class());
+    }
+
+    public function beforeSave($insert)
+    {
+        $old_name = $this->getOldAttribute('name');
+        if ($this->name != $old_name) {
+            $this->url = BaseInflector::transliterate(mb_strtolower($this->name));
+        }
+
+        return parent::beforeSave($insert);
     }
 }

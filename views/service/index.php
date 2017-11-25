@@ -2,6 +2,7 @@
 /* @var $service \app\modules\admin\models\Service */
 /* @var $services object */
 $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
+$servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
 ?>
 <div class="page-header page-caption">
     <div class="container">
@@ -26,7 +27,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                             </a>
                         </h2>
                         <p class="mb40"><?= $service->short_description ?></p>
-                        <a href="service-detail.html" class="btn-link">
+                        <a href="<?= $servicePath . $service->url ?>" class="btn-link">
                             <?= Yii::t('app', 'Read More') ?>
                         </a>
                     </div>
