@@ -7,6 +7,13 @@ use kartik\sortinput\SortableInput;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use \kartik\alert\AlertBlock;
+
+echo AlertBlock::widget([
+    'useSessionFlash' => true,
+    'type' => AlertBlock::TYPE_GROWL,
+    'delay' => 0
+]);
 
 $items = [];
 foreach ($services as $service) {

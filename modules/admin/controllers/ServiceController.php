@@ -20,7 +20,13 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
         if (\Yii::$app->request->isPost) {
             $newService = new Service();
             $newService->load(\Yii::$app->request->post());
-            $newService->save();
+            if ($newService->save()) {
+                \Yii::$app->session->setFlash('success', 'Новая услуга добавлена!');
+            } else {
+                foreach ($newService->getErrors() as $error) {
+                    \Yii::$app->session->setFlash('warning', $error);
+                }
+            }
         }
 
         return $this->redirect('/admin/service/index');
@@ -46,7 +52,13 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
         $service = Service::findOne($id);
         if (\Yii::$app->request->isPost) {
             $service->load(\Yii::$app->request->post());
-            $service->save();
+            if ($service->save()) {
+                \Yii::$app->session->setFlash('success', 'Изменения успешно сохранены!');
+            } else {
+                foreach ($service->getErrors() as $error) {
+                    \Yii::$app->session->setFlash('danger', $error);
+                }
+            }
         }
 
         return $this->render('edit', ['service' => $service]);
