@@ -40,4 +40,21 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
 
         return $this->redirect('/admin/service/index');
     }
+
+    public function actionEdit($id)
+    {
+        $service = Service::findOne($id);
+
+        return $this->render('edit', ['service' => $service]);
+    }
+
+    public function actionDelete($id)
+    {
+        if (!\Yii::$app->user->isGuest) {
+            $service = Service::findOne($id);
+            $service->delete();
+        }
+
+        return $this->redirect('/admin/service/index');
+    }
 }
