@@ -44,6 +44,10 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
     public function actionEdit($id)
     {
         $service = Service::findOne($id);
+        if (\Yii::$app->request->isPost) {
+            $service->load(\Yii::$app->request->post());
+            $service->save();
+        }
 
         return $this->render('edit', ['service' => $service]);
     }

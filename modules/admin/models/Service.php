@@ -52,12 +52,12 @@ class Service extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Название услуги',
-            'short_description' => 'Short Description',
-            'price_description' => 'Price Description',
-            'description' => 'Description',
-            'short_img' => 'Short Img',
-            'price_img' => 'Price Img',
-            'main_img' => 'Main Img',
+            'short_description' => 'Краткое описание',
+            'price_description' => 'Краткое описание прайса',
+            'description' => 'Описание',
+            'short_img' => 'Фото для краткой информации (360 х 160)',
+            'price_img' => 'Фото для прайса (360 х 219)',
+            'main_img' => 'Главное фото услуги (750 х 400)',
             'index' => 'Index',
         ];
     }
