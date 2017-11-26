@@ -22,7 +22,7 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                 <div class="service-block mb30 outline">
                     <div class="service-caption pinside40">
                         <h2 class="service-title">
-                            <a href="service-detail.html" class="title">
+                            <a href="<?= $servicePath . $service->url ?>" class="title">
                                 <?= $service->name ?>
                             </a>
                         </h2>

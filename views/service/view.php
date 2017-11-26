@@ -47,6 +47,7 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                             </ul>
                         </div>
                     </div>
+                    <?php if (isset($service->price) && !empty($service->price)): ?>
                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                         <div class="price-block outline mb30">
                             <div class="price-img"><img src="<?= $assetPath ?>/images/pricing-img-1.jpg" class="img-responsive" alt=""></div>
@@ -54,14 +55,15 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                                 <h2 class="price-title mb10"><?= $service->name ?></h2>
                                 <p class="mb30"><?= $service->price_description ?></p>
                                 <ul class="listnone mb40 text-uppercase">
-                                    <li>MANICURE.....................................<span class="meta-price">$30</span></li>
-                                    <li>SIMPLE NAILPAINT.........................<span class="meta-price">$10</span></li>
-                                    <li>NAIL PAINT DESIGN.......................<span class="meta-price">$25</span></li>
+                                    <?php foreach ($service->price as $pr): ?>
+                                    <li><?= $pr->name ?>.....................................<span class="meta-price"><?= $pr->price ?></span></li>
+                                    <?php endforeach; ?>
                                 </ul>
                                 <div class="text-center"> <a href="pricing.html" class="btn btn-default">book now</a></div>
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

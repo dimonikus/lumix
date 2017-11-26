@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Price;
 use app\modules\admin\models\Service;
 use yii\helpers\VarDumper;
 
@@ -32,6 +33,23 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
         return $this->redirect('/admin/service/index');
     }
 
+    public function actionAddNewPrice()
+    {
+        if (\Yii::$app->request->isPost) {
+            $price = new Price();
+            $price->load(\Yii::$app->request->post());
+            if ($price->save()) {
+                \Yii::$app->session->setFlash('success', 'Прайс добавлен!');
+            } else {
+                foreach ($price->getErrors() as $error) {
+                    \Yii::$app->session->setFlash('warning', $error);
+                }
+            }
+        }
+
+        return $this->redirect('/admin/service/edit?tab=price&id=' . $price->service_id);
+    }
+
     public function actionChangeIndex()
     {
         $index = \Yii::$app->request->post('index');
@@ -47,9 +65,10 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
         return $this->redirect('/admin/service/index');
     }
 
-    public function actionEdit($id)
+    public function actionEdit($id, $tab = 'preview')
     {
         $service = Service::findOne($id);
+        $price = new Price();
         if (\Yii::$app->request->isPost) {
             $service->load(\Yii::$app->request->post());
             if ($service->save()) {
@@ -61,7 +80,7 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
             }
         }
 
-        return $this->render('edit', ['service' => $service]);
+        return $this->render('edit', ['service' => $service, 'price' => $price, 'tab' => $tab]);
     }
 
     public function actionDelete($id)

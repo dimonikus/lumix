@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\models;
 
+use app\models\Price;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\BaseInflector;
@@ -44,6 +45,11 @@ class Service extends \yii\db\ActiveRecord
             [['name', 'url'], 'unique'],
             ['index', 'default', 'value' => 100],
         ];
+    }
+
+    public function getPrice()
+    {
+        return $this->hasMany(Price::className(), ['service_id' => 'id']);
     }
 
     /**
