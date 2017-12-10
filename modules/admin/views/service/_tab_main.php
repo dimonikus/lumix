@@ -12,7 +12,7 @@ echo $form->field($service, 'description')->widget(CKEditor::className(), [
 ]);
 
 echo $form->field($service, 'main_img')->fileInput();
-
+echo '<p>' . Html::img($service->getImage('main_img'), ['class'=>"img-rounded"]) . '</p>';
 echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
 ActiveForm::end();
 ?>

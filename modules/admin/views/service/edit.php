@@ -33,6 +33,11 @@ echo TabsX::widget([
             'content' => $this->render('_tab_price', ['service' => $service, 'price' => $price]),
             'active' => $tab == 'price'
         ],
+        [
+            'label' => '<i class="glyphicon glyphicon-globe"></i> SEO',
+            'content' => $this->render('_tab_seo', ['service' => $service]),
+            'active' => $tab == 'seo'
+        ],
     ],
     'position' => TabsX::POS_ABOVE,
     'align' => TabsX::ALIGN_CENTER,

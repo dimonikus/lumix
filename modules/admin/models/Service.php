@@ -52,6 +52,11 @@ class Service extends \yii\db\ActiveRecord
         return $this->hasMany(Price::className(), ['service_id' => 'id']);
     }
 
+    public function getImage($attribute)
+    {
+        return '/' . Yii::$app->params['imagePath'] . $this->$attribute;
+    }
+
     /**
      * @inheritdoc
      */

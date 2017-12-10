@@ -31,7 +31,9 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                             <?= Yii::t('app', 'Read More') ?>
                         </a>
                     </div>
-                    <div class="service-img"> <img src="<?= $assetPath ?>/images/service-1.jpg" class="img-responsive" alt=""> </div>
+                    <div class="service-img">
+                        <img src="<?= $service->getImage('short_img') ?>" class="img-responsive" alt="">
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>

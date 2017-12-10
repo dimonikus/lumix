@@ -19,16 +19,6 @@ $items = [];
 //        Html::endTag('span')
 //    ];
 //}
-
-$form = ActiveForm::begin();
-
-echo $form->field($service, 'price_description')->textarea(['rows' => 4]);
-
-echo $form->field($service, 'price_img')->fileInput();
-
-//echo Html::beginTag('div', ['class' => 'form-group']);
-//echo Html::button('Добавить цену на услугу', ['class' => 'btn btn-success']);
-//echo Html::endTag('div');
 \yii\bootstrap\Modal::begin([
     'header' => 'Добавить цену на услугу',
     'headerOptions' => ['class' => 'bg-primary text-white'],
@@ -41,7 +31,17 @@ echo $modalForm->field($price, 'service_id')->hiddenInput(['value' => $service->
 echo Html::button('Сохранить', ['class' => 'btn btn-primary']);
 ActiveForm::end();
 \yii\bootstrap\Modal::end();
-echo '<br>';
+echo '<br><br>';
+
+$form = ActiveForm::begin();
+
+echo $form->field($service, 'price_description')->textarea(['rows' => 4]);
+
+echo $form->field($service, 'price_img')->fileInput();
+
+//echo Html::beginTag('div', ['class' => 'form-group']);
+//echo Html::button('Добавить цену на услугу', ['class' => 'btn btn-success']);
+//echo Html::endTag('div');
 if (!empty($items)) {
     echo \kartik\sortinput\SortableInput::widget([
         'name' => 'index',
@@ -49,7 +49,7 @@ if (!empty($items)) {
         'hideInput' => true,
     ]);
 }
-
-echo Html::button('Сохранить', ['class' => 'btn btn-primary']);
+echo '<p>' . Html::img($service->getImage('price_img'), ['class'=>"img-rounded"]) . '</p>';
+echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
 ActiveForm::end();
 ?>

@@ -3,8 +3,11 @@
 namespace app\modules\admin\controllers;
 
 use app\models\Price;
+use app\modules\admin\models\ImageHelper;
 use app\modules\admin\models\Service;
+use yii\di\Instance;
 use yii\helpers\VarDumper;
+use yii\web\UploadedFile;
 
 class ServiceController extends \app\modules\admin\controllers\AdminController
 {
@@ -69,8 +72,12 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
     {
         $service = Service::findOne($id);
         $price = new Price();
+        $image = new ImageHelper();
         if (\Yii::$app->request->isPost) {
             $service->load(\Yii::$app->request->post());
+            $service->short_img = $image->upload($service, 'short_img');
+            $service->price_img = $image->upload($service, 'price_img');
+            $service->main_img = $image->upload($service, 'main_img');
             if ($service->save()) {
                 \Yii::$app->session->setFlash('success', 'Изменения успешно сохранены!');
             } else {
