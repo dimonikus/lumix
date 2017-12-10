@@ -4,7 +4,7 @@ use yii\widgets\ActiveForm;
 use \yii\helpers\Html;
 use dosamigos\ckeditor\CKEditor;
 
-$form = ActiveForm::begin();
+$form = ActiveForm::begin(['action' => '/admin/service/edit?id=' . $service->id . '&tab=main']);
 
 echo $form->field($service, 'description')->widget(CKEditor::className(), [
     'options' => ['rows' => 6],

@@ -27,13 +27,13 @@ $items = [];
 $modalForm = ActiveForm::begin(['action' => '/admin/service/add-new-price']);
 echo $modalForm->field($price, 'name')->textInput();
 echo $modalForm->field($price, 'price')->textInput();
-echo $modalForm->field($price, 'service_id')->hiddenInput(['value' => $service->id]);
-echo Html::button('Сохранить', ['class' => 'btn btn-primary']);
+echo $modalForm->field($price, 'service_id')->hiddenInput(['value' => $service->id])->label(false);
+echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
 ActiveForm::end();
 \yii\bootstrap\Modal::end();
 echo '<br><br>';
 
-$form = ActiveForm::begin();
+$form = ActiveForm::begin(['action' => '/admin/service/edit?id=' . $service->id . '&tab=price']);
 
 echo $form->field($service, 'price_description')->textarea(['rows' => 4]);
 

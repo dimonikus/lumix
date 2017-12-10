@@ -3,7 +3,7 @@
 use yii\widgets\ActiveForm;
 use \yii\helpers\Html;
 
-$form = ActiveForm::begin();
+$form = ActiveForm::begin(['action' => '/admin/service/edit?id=' . $service->id . '&tab=preview']);
 
 echo $form->field($service, 'name')->textInput();
 
