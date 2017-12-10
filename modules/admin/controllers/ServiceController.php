@@ -71,7 +71,8 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
     public function actionEdit($id, $tab = 'preview')
     {
         $service = Service::findOne($id);
-        $price = new Price();
+        $prices = Price::find()->andWhere(['service_id' => $id])->all();
+        $newPrice = new Price();
         $image = new ImageHelper();
         if (\Yii::$app->request->isPost) {
             $service->load(\Yii::$app->request->post());
@@ -87,7 +88,11 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
             }
         }
 
-        return $this->render('edit', ['service' => $service, 'price' => $price, 'tab' => $tab]);
+        return $this->render('edit', [
+            'service' => $service,
+            'prices' => $prices,
+            'newPrice' => $newPrice,
+            'tab' => $tab]);
     }
 
     public function actionDelete($id)

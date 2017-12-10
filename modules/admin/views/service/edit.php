@@ -30,7 +30,11 @@ echo TabsX::widget([
         ],
         [
             'label' => '<i class="glyphicon glyphicon-euro"></i> Прайс',
-            'content' => $this->render('_tab_price', ['service' => $service, 'price' => $price]),
+            'content' => $this->render('_tab_price', [
+                'service' => $service,
+                'prices' => $prices,
+                'newPrice' => $newPrice
+            ]),
             'active' => $tab == 'price'
         ],
         [
