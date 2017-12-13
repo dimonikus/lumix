@@ -78,6 +78,7 @@ $config = [
             'rules' => [
                 'service' => 'service/index',
                 'service/<slug>' => 'service/view',
+                'admin/login' => 'admin/admin/login',
             ],
         ],
     ],
