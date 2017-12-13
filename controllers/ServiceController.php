@@ -46,4 +46,11 @@ class ServiceController extends Controller
 
         return $this->render('view', compact('service', 'serviceMenu'));
     }
+
+    public function actionPrice()
+    {
+        $services = Service::find()->orderBy('index asc')->all();
+
+        return $this->render('price', compact('services'));
+    }
 }

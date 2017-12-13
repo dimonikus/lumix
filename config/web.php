@@ -77,6 +77,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'service' => 'service/index',
+                'price' => 'service/price',
                 'service/<slug>' => 'service/view',
                 'admin/login' => 'admin/admin/login',
             ],

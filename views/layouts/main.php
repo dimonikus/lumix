@@ -84,18 +84,20 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
 <!--                                <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>-->
                             </ul>
                         </li>
-                        <li><a href="blog-default.html" title="Blog" class="animsition-link">News</a>
-                            <ul>
-                                <li><a href="blog-default.html" title="Blog" class="animsition-link">Blog Default</a></li>
-                                <li><a href="blog-single.html" title="Blog Single" class="animsition-link">Blog Single</a></li>
-                            </ul>
+                        <li>
+                            <a href="blog-default.html" title="Blog" class="animsition-link">
+                                <?= Yii::t('app', 'News') ?>
+                            </a>
+<!--                            <ul>-->
+<!--                                <li><a href="blog-default.html" title="Blog" class="animsition-link">Blog Default</a></li>-->
+<!--                                <li><a href="blog-single.html" title="Blog Single" class="animsition-link">Blog Single</a></li>-->
+<!--                            </ul>-->
                         </li>
-                        <li><a href="testimonial.html" title="Features" class="animsition-link">Features</a>
-                            <ul>
-                                <li><a href="testimonial.html" title="Testimonial" class="animsition-link">Testimonial</a></li>
-                            </ul>
+                        <li>
+                            <a href="<?= Url::to('/price') ?>" title="Pricing" class="animsition-link">
+                                <?= Yii::t('app', 'Pricing') ?>
+                            </a>
                         </li>
-                        <li><a href="pricing.html" title="Pricing" class="animsition-link">Pricing</a></li>
                         <li>
                             <a href="<?= Url::to('/site/contact') ?>" title="Contact Us" class="animsition-link">
                                 <?= Yii::t('app', 'Contact') ?>
