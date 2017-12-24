@@ -3,6 +3,7 @@
 /* @var $services object */
 /* @var $service \app\modules\admin\models\Service */
 /* @var $newService \app\modules\admin\models\Service */
+/* manual - http://demos.krajee.com/sortable-input */
 use kartik\sortinput\SortableInput;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
@@ -33,9 +34,6 @@ foreach ($services as $service) {
 ?>
 <h1>service/index</h1>
 
-<p>
-    <code>http://demos.krajee.com/sortable-input</code>
-</p>
 <div>
     <p>
         <?php
