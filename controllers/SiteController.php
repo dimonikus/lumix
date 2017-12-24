@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\ContactPage;
 use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
@@ -38,7 +39,9 @@ class SiteController extends Controller
         $model = new Service();
         $model->index = 5;
 
-        return $this->render('index', ['model' => $model]);
+        return $this->render('index', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -48,12 +51,10 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
+        if (!$model = ContactPage::find()->one()) {
+            $model = new ContactPage();
         }
+
         return $this->render('contact', [
             'model' => $model,
         ]);

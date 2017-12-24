@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\ContactForm */
+/* @var $model app\models\ContactPage */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -34,26 +34,29 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                     <ul class="listnone">
                         <li><i class="icon-placeholder icon-secondary icon-2x"></i>
                             <address>
-                                <strong>Киев 01054</strong>
-                                <br> Гоголевская 22/24
+                                <?= $model->getAddress() ?>
                             </address>
                         </li>
                         <li><i class=" icon-phone-call icon-secondary icon-2x"></i>
-                            <p>068 140 3337</p>
+                            <p><?= $model->getPhone() ?></p>
                         </li>
+                        <?php if (!empty($model->mail)): ?>
                         <li><i class="icon-email icon-secondary icon-2x"></i>
-                            <p>beautysalon@gmail.com</p>
+                            <p><?= $model->getMail() ?></p>
                         </li>
+                        <?php endif; ?>
+                        <?php if (!empty($model->opening_hours)): ?>
                         <li><i class=" icon-clock icon-secondary icon-2x"></i>
-                            <p>понедельник-субб&nbsp;10:00–20:00</p>
+                            <p><?= $model->getOpeningHours() ?></p>
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 outline pinside40">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h1><?= Yii::t('app', 'Contact Form') ?></h1>
+                        <h2><?= Yii::t('app', 'Contact Form') ?></h2>
                     </div>
                 </div>
                 <div class="row">

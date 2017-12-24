@@ -60,16 +60,14 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                                 <p class="mb30"><?= $service->price_description ?></p>
                                 <ul class="listnone mb40 text-uppercase">
                                     <?php foreach ($service->price as $pr): ?>
-                                    <li><?= $pr->name ?>
-                                        <?php
-                                        for ($i = 30-mb_strlen($pr->name); $i > 0; $i--) {
-                                            echo '..';
-                                        }
-                                        ?>
-                                        <span class="meta-price"><?= $pr->price ?></span></li>
+                                    <li>
+                                        <?= $pr->name ?>
+                                        <span class="meta-price">
+                                            <?= $pr->price ?>&nbsp;₴
+                                        </span>
+                                    </li>
                                     <?php endforeach; ?>
                                 </ul>
-                                <div class="text-center"> <a href="pricing.html" class="btn btn-default">book now</a></div>
                             </div>
                         </div>
                     </div>

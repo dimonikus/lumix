@@ -17,4 +17,5 @@ return [
 'Need any help' => 'Хотите записаться',
 'Pricing' => 'Цены',
 'News' => 'Новости',
+'Quick Links' => 'Ссылки',
 ];

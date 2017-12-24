@@ -29,8 +29,10 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                         <ul class="listnone mb40 text-uppercase">
                             <?php foreach ($service->price as $pr): ?>
                             <li>
-                                <?= $pr->name ?>...................
-                                <span class="meta-price"><?= $pr->price ?></span>
+                                <?= $pr->name ?>
+                                <span class="meta-price">
+                                    <?= $pr->price ?>&nbsp;₴
+                                </span>
                             </li>
                             <?php endforeach; ?>
                         </ul>
