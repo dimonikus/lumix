@@ -4,16 +4,7 @@
 $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
 ?>
-<div class="page-header page-caption">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1 class="page-title">Beauty Saloon Services</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
+<?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'Service List')]) ?>
 <div class="space-medium">
     <div class="container">
         <div class="row">
