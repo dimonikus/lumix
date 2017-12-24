@@ -17,7 +17,7 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                                 <img src="<?= $service->getImage('main_img') ?>" class="img-responsive" alt="">
                             </div>
                             <div class="service-single-content pinside30 outline">
-                                <h1 class="section-title"><?= $service->name ?></h1>
+                                <h2><?= $service->name ?></h2>
                                 <?= $service->description ?>
                             </div>
                         </div>
