@@ -1,7 +1,8 @@
 <?php
 
 namespace app\modules\admin\controllers;
-
+use app\models\MainBlocks;
+use yii\helpers\VarDumper;
 
 
 /**
@@ -23,7 +24,14 @@ class DefaultController extends AdminController
      */
     public function actionIndex()
     {
+        if (\Yii::$app->request->isPost) {
+            MainBlocks::saveFromPost(\Yii::$app->request->post())
+                ? \Yii::$app->session->setFlash('success', 'Главная страница сайта сохранена!')
+                : \Yii::$app->session->setFlash('warning', 'Главная страница сайта не сохранена!');
+        }
 
-        return $this->render('index');
+        $model = MainBlocks::find()->orderBy('index asc')->all();
+
+        return $this->render('index', compact('model'));
     }
 }

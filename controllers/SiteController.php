@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\ContactPage;
+use app\models\MainBlocks;
 use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
@@ -36,8 +37,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $model = new Service();
-        $model->index = 5;
+        $model = MainBlocks::find()
+            ->where(['checkbox' => MainBlocks::CHECKBOX_CHECKED])
+            ->orderBy('index asc')
+            ->all();
 
         return $this->render('index', [
             'model' => $model,
