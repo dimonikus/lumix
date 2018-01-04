@@ -1,7 +1,9 @@
 <?php
 
 namespace app\modules\admin\controllers;
+use app\models\BlockServices;
 use app\models\MainBlocks;
+use app\modules\admin\models\Service;
 use yii\helpers\VarDumper;
 
 
@@ -33,5 +35,37 @@ class DefaultController extends AdminController
         $model = MainBlocks::find()->orderBy('index asc')->all();
 
         return $this->render('index', compact('model'));
+    }
+
+    public function actionServicesBlockWidget()
+    {
+        if (!$model = BlockServices::find()->one()) {
+            $model = new BlockServices();
+        }
+        $dropDown = Service::getServiceForDropDown();
+
+        if (\Yii::$app->request->isPost) {
+            $model->load(\Yii::$app->request->post());
+            if ($model->save()) \Yii::$app->session->setFlash('success', 'Блок с услугами сохранен успешно.');
+        }
+
+        \Yii::$app->session->setFlash('info', 'Редактирование блока с услугами');
+
+        return $this->render('block_services', compact('model', 'dropDown'));
+    }
+
+    public function actionAboutBlockWidget()
+    {
+        echo 'hello';
+    }
+
+    public function actionBestPricesWidget()
+    {
+        echo 'hello';
+    }
+
+    public function actionPortfoliosBlockWidget()
+    {
+        echo 'hello';
     }
 }

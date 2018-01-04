@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\BaseInflector;
 
 /**
  * This is the model class for table "block".
@@ -69,5 +70,13 @@ class MainBlocks extends \yii\db\ActiveRecord
         }
 
         return true;
+    }
+
+    /**
+     * return string action name
+     */
+    public function getAction()
+    {
+        return BaseInflector::camel2id($this->widget_name);
     }
 }

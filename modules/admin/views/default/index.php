@@ -22,7 +22,7 @@ $items = [];
 foreach ($model as $block) {
     $items[$block->id] = ['content' => Html::checkbox($block->id, $block->checkbox, ['label' => $block->name]) .
         Html::beginTag('span', ['class' => 'pull-right']) .
-        Html::a('<i class="glyphicon glyphicon-pencil"></i>', '/admin/service/edit?id=',
+        Html::a('<i class="glyphicon glyphicon-pencil"></i>', '/admin/default/' . $block->getAction(),
             ['class' => 'btn btn-primary btn-xs service-edit-btn']) . '&nbsp;' .
         Html::endTag('span')
     ];

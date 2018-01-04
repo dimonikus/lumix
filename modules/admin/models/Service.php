@@ -87,6 +87,13 @@ class Service extends \yii\db\ActiveRecord
         return $menu;
     }
 
+    public static function getServiceForDropDown()
+    {
+        $models = self::find()->select('id, name')->asArray()->all();
+
+        return ArrayHelper::map($models, 'id', 'name');
+    }
+
     /**
      * @inheritdoc
      * @return ServiceQuery the active query used by this AR class.

@@ -16,11 +16,10 @@ class m171224_222817_create_table_block_services extends Migration
             'block_services',
             [
                 'id' => $this->primaryKey(),
-                'checkbox' => $this->integer(1)->notNull()->defaultValue(0),
                 'description' => $this->text(),
                 'first_service_id' => $this->integer()->notNull()->defaultValue(0),
                 'second_service_id' => $this->integer()->notNull()->defaultValue(0),
-                'widget_name' => $this->string(),
+                'name' => $this->string(),
             ]
         );
     }
