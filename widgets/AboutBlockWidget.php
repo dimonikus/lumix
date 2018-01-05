@@ -8,13 +8,15 @@
 
 namespace app\widgets;
 
+use app\models\BlockAbout;
 use yii\base\Widget;
 
 class AboutBlockWidget extends Widget
 {
     public function run()
     {
-        // todo load model
-        return $this->render('block_about');
+        $model = BlockAbout::find()->one();
+
+        return $this->render('block_about', compact('model'));
     }
 }

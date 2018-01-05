@@ -1,16 +1,16 @@
 <?php
 /* @var $this \yii\web\View */
-/* @var $model \app\models\BlockServices */
+/* @var $model \app\models\BlockAbout */
 /* @var $dropDown array */
 use yii\widgets\ActiveForm;
 use app\modules\admin\models\Service;
 use yii\helpers\Html;
 use kartik\alert\AlertBlock;
 ?>
-<div class="admin-default-index">
-    <h1>Главная страница сайта</h1>
-    <p class="alert alert-info" role="alert">Редактирование блока с услугами</p>
-</div>
+    <div class="admin-default-index">
+        <h1>Главная страница сайта</h1>
+        <p class="alert alert-info" role="alert">Редактирование блока о салоне</p>
+    </div>
 
 <?php
 echo AlertBlock::widget([
@@ -23,9 +23,9 @@ echo $form->field($model, 'name')->textInput();
 
 echo $form->field($model, 'description')->textarea(['rows' => 6]);
 
-echo $form->field($model, 'first_service_id')->dropDownList($dropDown);
+echo $form->field($model, 'image')->fileInput();
 
-echo $form->field($model, 'second_service_id')->dropDownList($dropDown);
+echo '<p>' . Html::img($model->getImage(), ['class'=>"img-rounded"]) . '</p>';
 
 echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
 

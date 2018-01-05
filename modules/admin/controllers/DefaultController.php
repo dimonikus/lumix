@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\admin\controllers;
+use app\models\BlockAbout;
 use app\models\BlockServices;
 use app\models\MainBlocks;
 use app\modules\admin\models\Service;
@@ -49,14 +50,22 @@ class DefaultController extends AdminController
             if ($model->save()) \Yii::$app->session->setFlash('success', 'Блок с услугами сохранен успешно.');
         }
 
-        \Yii::$app->session->setFlash('info', 'Редактирование блока с услугами');
-
         return $this->render('block_services', compact('model', 'dropDown'));
     }
 
     public function actionAboutBlockWidget()
     {
-        echo 'hello';
+        if (!$model = BlockAbout::find()->one()) {
+            $model = new BlockAbout();
+        }
+        $dropDown = Service::getServiceForDropDown();
+
+        if (\Yii::$app->request->isPost) {
+            $model->load(\Yii::$app->request->post());
+            if ($model->save()) \Yii::$app->session->setFlash('success', 'Блок о салоне сохранен успешно.');
+        }
+
+        return $this->render('block_about', compact('model', 'dropDown'));
     }
 
     public function actionBestPricesWidget()
