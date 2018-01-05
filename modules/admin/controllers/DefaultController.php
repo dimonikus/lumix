@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 use app\models\BlockAbout;
 use app\models\BlockServices;
 use app\models\MainBlocks;
+use app\modules\admin\models\ImageHelper;
 use app\modules\admin\models\Service;
 use yii\helpers\VarDumper;
 
@@ -61,7 +62,9 @@ class DefaultController extends AdminController
         $dropDown = Service::getServiceForDropDown();
 
         if (\Yii::$app->request->isPost) {
+            $image = new ImageHelper();
             $model->load(\Yii::$app->request->post());
+            $model->image = $image->upload($model, 'image');
             if ($model->save()) \Yii::$app->session->setFlash('success', 'Блок о салоне сохранен успешно.');
         }
 

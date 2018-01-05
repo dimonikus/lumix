@@ -47,5 +47,8 @@ class BlockAbout extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getImage(){}
+    public function getImage()
+    {
+        return '/' . Yii::$app->params['imagePath'] . $this->image;
+    }
 }
