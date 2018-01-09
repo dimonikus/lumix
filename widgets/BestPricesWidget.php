@@ -8,13 +8,15 @@
  */
 namespace app\widgets;
 
+use app\models\BlockPrices;
 use yii\base\Widget;
 
 class BestPricesWidget extends Widget
 {
     public function run()
     {
-        // todo load model
-        return $this->render('block_prices');
+        $model = BlockPrices::find()->one();
+
+        return $this->render('block_prices', compact('model'));
     }
 }

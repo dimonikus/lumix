@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 use app\models\BlockAbout;
+use app\models\BlockPrices;
 use app\models\BlockServices;
 use app\models\MainBlocks;
 use app\modules\admin\models\ImageHelper;
@@ -59,8 +60,6 @@ class DefaultController extends AdminController
         if (!$model = BlockAbout::find()->one()) {
             $model = new BlockAbout();
         }
-        $dropDown = Service::getServiceForDropDown();
-
         if (\Yii::$app->request->isPost) {
             $image = new ImageHelper();
             $model->load(\Yii::$app->request->post());
@@ -68,12 +67,22 @@ class DefaultController extends AdminController
             if ($model->save()) \Yii::$app->session->setFlash('success', 'Блок о салоне сохранен успешно.');
         }
 
-        return $this->render('block_about', compact('model', 'dropDown'));
+        return $this->render('block_about', compact('model'));
     }
 
     public function actionBestPricesWidget()
     {
-        echo 'hello';
+        if (!$model = BlockPrices::find()->one()) {
+            $model = new BlockPrices();
+        }
+        if (\Yii::$app->request->isPost) {
+            $image = new ImageHelper();
+            $model->load(\Yii::$app->request->post());
+            $model->image = $image->upload($model, 'image');
+            if ($model->save()) \Yii::$app->session->setFlash('success', 'Прайс блок сохранен успешно.');
+        }
+
+        return $this->render('block_prices', compact('model'));
     }
 
     public function actionPortfoliosBlockWidget()

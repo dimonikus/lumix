@@ -18,4 +18,5 @@ return [
 'Pricing' => 'Цены',
 'News' => 'Новости',
 'Quick Links' => 'Ссылки',
+'View Pricing' => 'Наши цены',
 ];
