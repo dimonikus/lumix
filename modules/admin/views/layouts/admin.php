@@ -40,6 +40,7 @@ AdminAsset::register($this);
         'items' => [
             ['label' => 'Главная', 'url' => ['/admin/default/index']],
             ['label' => 'Услуги', 'url' => ['/admin/service/index']],
+            ['label' => 'Новости', 'url' => ['/admin/news/index']],
             ['label' => 'Контакты', 'url' => ['/admin/contact/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/admin/admin/login']]

@@ -86,7 +86,9 @@ $contact = \app\models\ContactPage::find()->one();
                             </ul>
                         </li>
                         <li>
-                            <a href="blog-default.html" title="Blog" class="animsition-link">
+                            <a href="<?= Url::to('/news') ?>"
+                               title="<?= Yii::t('app', 'News') ?>"
+                               class="animsition-link">
                                 <?= Yii::t('app', 'News') ?>
                             </a>
 <!--                            <ul>-->
