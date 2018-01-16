@@ -42,4 +42,16 @@ class NewsController extends Controller
 
         return $this->render('index', compact('news', 'categories'));
     }
+
+    /**
+     * @return string
+     */
+    public function actionView($slug)
+    {
+        $news = News::find()->where(['status' => News::STATUS_PUBLISHED, 'url' => $slug])->one();
+        $service = Service::find()->orderBy('index asc')->all();
+        $categories = ArrayHelper::map($service, 'id', 'name');
+
+        return $this->render('view', compact('news', 'categories'));
+    }
 }

@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\modules\admin\models\Service;
 use Yii;
+use yii\helpers\BaseInflector;
 
 /**
  * This is the model class for table "news".
@@ -89,5 +90,15 @@ class News extends \yii\db\ActiveRecord
             self::STATUS_DRAFT => 'Черновик',
             self::STATUS_PUBLISHED => 'Опубликован',
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        $old_name = $this->getOldAttribute('name');
+        if ($this->name != $old_name) {
+            $this->url = BaseInflector::transliterate(mb_strtolower($this->name));
+        }
+
+        return parent::beforeSave($insert);
     }
 }
