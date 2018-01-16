@@ -61,6 +61,26 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
         return $this->redirect('/admin/service/edit?tab=price&id=' . $price->service_id);
     }
 
+    public function actionDeletePrice($id)
+    {
+        $priceModel = Price::find()->where(['id' => $id])->one();
+        $serviceId = $priceModel->service_id;
+        if ($priceModel->delete()) {
+            \Yii::$app->session->setFlash('success', 'Прайс удален!');
+        } else {
+            foreach ($priceModel->getErrors() as $error) {
+                \Yii::$app->session->setFlash('warning', $error);
+            }
+        }
+
+        return $this->redirect('/admin/service/edit?tab=price&id=' . $serviceId);
+    }
+
+    public function actionEditPrice($id)
+    {
+
+    }
+
     public function actionChangeIndex()
     {
         $index = \Yii::$app->request->post('index');

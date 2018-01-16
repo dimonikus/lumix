@@ -42,8 +42,8 @@ class Price extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'price' => 'Price',
+            'name' => 'Название услуги',
+            'price' => 'Цена',
             'service_id' => 'Service ID',
             'index' => 'Index',
         ];
