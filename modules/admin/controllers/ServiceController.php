@@ -6,6 +6,7 @@ use app\models\Price;
 use app\modules\admin\models\ImageHelper;
 use app\modules\admin\models\Service;
 use yii\di\Instance;
+use yii\helpers\Json;
 use yii\helpers\VarDumper;
 use yii\web\UploadedFile;
 
@@ -46,11 +47,17 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
 
     public function actionAddNewPrice()
     {
+        $post = \Yii::$app->request->post();
         if (\Yii::$app->request->isPost) {
-            $price = new Price();
-            $price->load(\Yii::$app->request->post());
+            if ($price = Price::find()->andWhere(['id' => $post['Price']['id']])->one()) {
+                $message = 'Прайс изменен!';
+            } else {
+                $price = new Price();
+                $message = 'Прайс добавлен!';
+            }
+            $price->load($post);
             if ($price->save()) {
-                \Yii::$app->session->setFlash('success', 'Прайс добавлен!');
+                \Yii::$app->session->setFlash('success', $message);
             } else {
                 foreach ($price->getErrors() as $error) {
                     \Yii::$app->session->setFlash('warning', $error);
@@ -76,9 +83,16 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
         return $this->redirect('/admin/service/edit?tab=price&id=' . $serviceId);
     }
 
-    public function actionEditPrice($id)
+    public function actionEditPrice($id, $serviceId = null)
     {
+        if ($id == Price::NEW_PRICE) {
+            $model = new Price();
+            $model->service_id = $serviceId;
+        } else {
+            $model = Price::find()->where(['id' => $id])->one();
+        }
 
+        return $this->renderAjax('_modal', ['model' => $model]);
     }
 
     public function actionChangeIndex()

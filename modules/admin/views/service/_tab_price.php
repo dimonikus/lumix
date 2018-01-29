@@ -9,8 +9,13 @@ $items = [];
 foreach ($prices as $price) {
     $items[$price->id] = ['content' => $price->name . ' - <b>' . $price->price . ' грн.</b>' .
         Html::beginTag('span', ['class' => 'pull-right']) .
-        Html::a('<i class="glyphicon glyphicon-pencil"></i>', '/admin/service/edit-price?id=' . $price->id,
-            ['class' => 'btn btn-primary btn-xs service-edit-btn']) . '&nbsp;' .
+        Html::a('<i class="glyphicon glyphicon-pencil"></i>',
+            ['#'],
+            [
+                'class' => 'btn btn-primary btn-xs service-edit-btn js-price',
+                'data-url' => \Yii::$app->urlManager->createUrl(['/admin/service/edit-price', 'id' => $price->id]),
+                'onClick' => 'return false'
+            ]) . '&nbsp;' .
         Html::a('<i class="glyphicon glyphicon-trash"></i>', '/admin/service/delete-price?id=' . $price->id,
             [
                 'class' => 'btn btn-danger btn-xs service-delete-btn',
@@ -27,18 +32,22 @@ if (!empty($items)) {
         'hideInput' => true,
     ]);
 }
-\yii\bootstrap\Modal::begin([
-    'header' => 'Добавить цену на услугу',
-    'headerOptions' => ['class' => 'bg-primary text-white'],
-    'toggleButton' => ['label' => 'Добавить цену на услугу', 'class' => 'btn btn-success'],
-]);
-$modalForm = ActiveForm::begin(['action' => '/admin/service/add-new-price']);
-echo $modalForm->field($newPrice, 'name')->textInput();
-echo $modalForm->field($newPrice, 'price')->textInput();
-echo $modalForm->field($newPrice, 'service_id')->hiddenInput(['value' => $service->id])->label(false);
-echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
-ActiveForm::end();
-\yii\bootstrap\Modal::end();
+
+echo Html::tag('div', '', ['id' => 'forPriceModal']);
+
+echo Html::button('Добавить цену на услугу',
+    [
+        'class' => 'btn btn-success js-price',
+        'data-url' => \Yii::$app->urlManager->createUrl(
+            [
+                '/admin/service/edit-price',
+                'id' => \app\models\Price::NEW_PRICE,
+                'serviceId' => $service->id,
+            ]
+        )
+    ]
+);
+
 echo '<br><br>';
 
 $form = ActiveForm::begin(['action' => '/admin/service/edit?id=' . $service->id . '&tab=price']);

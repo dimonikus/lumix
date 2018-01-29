@@ -15,6 +15,7 @@ use Yii;
  */
 class Price extends \yii\db\ActiveRecord
 {
+    const NEW_PRICE = 0;
     /**
      * @inheritdoc
      */

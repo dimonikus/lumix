@@ -26,6 +26,7 @@ class AdminAsset extends AssetBundle
     public $js = [
 //        '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
         'js/admin.js',
+        'js/adminJs.js',
 
     ];
     public $depends = [
