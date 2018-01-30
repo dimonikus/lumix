@@ -24,14 +24,28 @@ class ImageHelper extends Model
         ];
     }
 
+    private function generateImageName($extension)
+    {
+        return time() . '_' . \Yii::$app->security->generateRandomString(5). '.' . $extension;
+    }
+
     public function upload($model, $attribute)
     {
         $this->imageFile = UploadedFile::getInstance($model, $attribute);
         if ($this->validate()) {
-            $this->imageFile->saveAs(\Yii::$app->params['imagePath'] . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            return $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $this->remove($model->oldAttributes[$attribute]);
+            $imageName = $this->generateImageName($this->imageFile->extension);
+            $this->imageFile->saveAs(\Yii::$app->params['imagePath'] . $imageName);
+            return $imageName;
         } else {
             return $model->oldAttributes[$attribute];
+        }
+    }
+
+    public function remove($imageName)
+    {
+        if (!empty($imageName) && file_exists(\Yii::$app->params['imagePath'].$imageName)) {
+            @unlink(\Yii::$app->params['imagePath'].$imageName);
         }
     }
 }
