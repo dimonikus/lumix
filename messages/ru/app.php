@@ -13,6 +13,10 @@ return [
 'Contact Info' => 'Контактная информация',
 'view services' => 'все услуги',
 'Read More' => 'подробнее',
-'Opening Timing' => 'мы открыты',
+'Opening Timing' => 'без выходных',
 'Need any help' => 'Хотите записаться',
+'Pricing' => 'Цены',
+'News' => 'Новости',
+'Quick Links' => 'Ссылки',
+'View Pricing' => 'Наши цены',
 ];

@@ -2,42 +2,17 @@
 
 namespace app\controllers;
 
+use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
 use app\models\ContactForm;
 
 class ServiceController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * @inheritdoc
      */
@@ -59,8 +34,23 @@ class ServiceController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $services = Service::find()->orderBy('index asc')->all();
+
+        return $this->render('index', compact('services'));
     }
 
+    public function actionView($slug)
+    {
+        $serviceMenu = ArrayHelper::map(Service::find()->orderBy('index asc')->all(), 'url', 'name');
+        $service = Service::findOne(['url' => $slug]);
 
+        return $this->render('view', compact('service', 'serviceMenu'));
+    }
+
+    public function actionPrice()
+    {
+        $services = Service::find()->orderBy('index asc')->all();
+
+        return $this->render('price', compact('services'));
+    }
 }

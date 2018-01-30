@@ -13,6 +13,7 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
+$contact = \app\models\ContactPage::find()->one();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -79,24 +80,29 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                                 <?= Yii::t('app', 'Service List') ?>
                             </a>
                             <ul>
-                                <li><a href="service-list.html" title="Service List">Service List</a></li>
-                                <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>
+                                <?= \app\modules\admin\models\Service::getMenuItem() ?>
+<!--                                <li><a href="service-list.html" title="Service List">Service List</a></li>-->
+<!--                                <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>-->
                             </ul>
                         </li>
-                        <li><a href="blog-default.html" title="Blog" class="animsition-link">News</a>
-                            <ul>
-                                <li><a href="blog-default.html" title="Blog" class="animsition-link">Blog Default</a></li>
-                                <li><a href="blog-single.html" title="Blog Single" class="animsition-link">Blog Single</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="testimonial.html" title="Features" class="animsition-link">Features</a>
-                            <ul>
-                                <li><a href="testimonial.html" title="Testimonial" class="animsition-link">Testimonial</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="pricing.html" title="Pricing" class="animsition-link">Pricing</a></li>
                         <li>
-                            <a href="<?= Url::to('/site/contact') ?>" title="Contact Us" class="animsition-link">
+                            <a href="<?= Url::to('/news') ?>"
+                               title="<?= Yii::t('app', 'News') ?>"
+                               class="animsition-link">
+                                <?= Yii::t('app', 'News') ?>
+                            </a>
+<!--                            <ul>-->
+<!--                                <li><a href="blog-default.html" title="Blog" class="animsition-link">Blog Default</a></li>-->
+<!--                                <li><a href="blog-single.html" title="Blog Single" class="animsition-link">Blog Single</a></li>-->
+<!--                            </ul>-->
+                        </li>
+                        <li>
+                            <a href="<?= Url::to('/price') ?>" title="Pricing" class="animsition-link">
+                                <?= Yii::t('app', 'Pricing') ?>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to('/contact') ?>" title="Contact Us" class="animsition-link">
                                 <?= Yii::t('app', 'Contact') ?>
                             </a>
                         </li>
@@ -123,13 +129,17 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
             </div>
             <div class="col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-6 col-xs-12">
                 <div class="footer-widget footer-contact">
-                    <h2 class="footer-title">Contact Info</h2>
+                    <h2 class="footer-title"><?= Yii::t('app', 'Contact Info') ?></h2>
                     <ul class="listnone">
                         <li>
                             <div class="row">
                                 <div class="col-md-2"><i class="fa fa-phone"></i></div>
                                 <div class="col-md-10">
-                                    <h4 class="call-no"><a href="contact.html">+1 (800) 123 - 456</a></h4>
+                                    <h4 class="call-no">
+                                        <a href="<?= Url::to('/contact') ?>">
+                                            <?= $contact->getPhone() ?>
+                                        </a>
+                                    </h4>
                                 </div>
                             </div>
                         </li>
@@ -137,7 +147,11 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                             <div class="row">
                                 <div class="col-md-2"><i class="fa fa-envelope-o"></i></div>
                                 <div class="col-md-10">
-                                    <h4 class="mail-text"><a href="contact.html">beautysalon@gmail.com</a></h4>
+                                    <h4 class="mail-text">
+                                        <a href="<?= Url::to('/contact') ?>">
+                                            <?= $contact->getMail() ?>
+                                        </a>
+                                    </h4>
                                 </div>
                             </div>
                         </li>
@@ -145,7 +159,11 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                             <div class="row">
                                 <div class="col-md-2"><i class="fa fa-clock-o"></i></div>
                                 <div class="col-md-10">
-                                    <h4 class="time-text"><a href="contact.html">Mon-sun : 10am : 07pm</a></h4>
+                                    <h4 class="time-text">
+                                        <a href="<?= Url::to('/contact') ?>">
+                                            <?= $contact->getOpeningHours() ?>
+                                        </a>
+                                    </h4>
                                 </div>
                             </div>
                         </li>
@@ -154,14 +172,32 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
             </div>
             <div class="col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-6 col-xs-12">
                 <div class="footer-widget">
-                    <h2 class="footer-title">Quick Links</h2>
+                    <h2 class="footer-title"><?= Yii::t('app', 'Quick Links') ?></h2>
                     <ul class="listnone">
-                        <li><i class="fa fa-caret-right"></i><a href="index.html">Home</a></li>
-                        <li><i class="fa fa-caret-right"></i><a href="service-list.html">Services</a></li>
-                        <li><i class="fa fa-caret-right"></i><a href="testimonial.html">Testimonial</a></li>
-                        <li><i class="fa fa-caret-right"></i><a href="blog-default.html">News</a></li>
-                        <li><i class="fa fa-caret-right"></i><a href="pricing.html">Pricing</a></li>
-                        <li><i class="fa fa-caret-right"></i><a href="contact.html">Contact</a></li>
+                        <li>
+                            <i class="fa fa-caret-right"></i>
+                            <a href="<?= Yii::$app->getHomeUrl() ?>">
+                                <?= Yii::t('app', 'Home') ?>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-caret-right"></i>
+                            <a href="<?= Url::to('/service') ?>">
+                                <?= Yii::t('app', 'Service List') ?>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-caret-right"></i>
+                            <a href="<?= Url::to('/price') ?>">
+                                <?= Yii::t('app', 'Pricing') ?>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-caret-right"></i>
+                            <a href="<?= Url::to('/contact') ?>">
+                                <?= Yii::t('app', 'Contact') ?>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
