@@ -9,11 +9,14 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
     <div class="container">
         <div class="row">
             <?php foreach ($services as $service): ?>
+            <?php if (isset($service->price) && !empty($service->price)): ?>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="price-block outline mb30">
+                    <?php if ($service->price_img): ?>
                     <div class="price-img">
                         <img src="<?= $service->getImage('price_img') ?>" class="img-responsive" alt="">
                     </div>
+                    <?php endif; ?>
                     <div class="price-content pinside30">
                         <h2 class="price-title mb10"><?= $service->name ?></h2>
                         <p class="mb30"><?= $service->price_description ?></p>
@@ -35,6 +38,7 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>

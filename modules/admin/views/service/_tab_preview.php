@@ -11,7 +11,20 @@ echo $form->field($service, 'short_description')->textarea(['rows' => 4]);
 
 echo $form->field($service, 'short_img')->fileInput();
 
-echo '<p>' . Html::img($service->getImage('short_img'), ['class'=>"img-rounded"]) . '</p>';
+if (!empty($service->short_img)) {
+    echo Html::beginTag('div', ['style' => 'width: 380px']);
+    echo Html::a('×',
+        ['/admin/service/delete-image', 'id' => $service->id, 'tab' => 'preview', 'attribute' => 'short_img'],
+        ['class' => 'close',  'aria-hidden' => 'true']
+    );
+    echo '<p>' . Html::img($service->getImage('short_img'),
+            [
+                'class'=>"img-rounded",
+                'style' => 'max-height: 160px; max-width: 360px'
+            ]
+        ) . '</p>';
+    echo Html::endTag('div');
+}
 
 echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
 ActiveForm::end();

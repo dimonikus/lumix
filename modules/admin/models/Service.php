@@ -4,6 +4,7 @@ namespace app\modules\admin\models;
 
 use app\models\Price;
 use Yii;
+use app\modules\admin\behaviors\SluggableBehavior;
 use yii\helpers\ArrayHelper;
 use yii\helpers\BaseInflector;
 
@@ -103,13 +104,18 @@ class Service extends \yii\db\ActiveRecord
         return new ServiceQuery(get_called_class());
     }
 
-    public function beforeSave($insert)
+    public function behaviors()
     {
-        $old_name = $this->getOldAttribute('name');
-        if ($this->name != $old_name) {
-            $this->url = BaseInflector::transliterate(mb_strtolower($this->name));
-        }
+        $behaviors = [
+            SluggableBehavior::className() => [
+                'class' => SluggableBehavior::className(),
+                'ensureUnique' => true,
+                'attribute' => 'name',
+                'slugAttribute' => 'url',
+            ],
 
-        return parent::beforeSave($insert);
+        ];
+
+        return ArrayHelper::merge(parent::behaviors(), $behaviors);
     }
 }

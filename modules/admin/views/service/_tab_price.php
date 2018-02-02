@@ -59,8 +59,19 @@ echo $form->field($service, 'price_img')->fileInput();
 //echo Html::beginTag('div', ['class' => 'form-group']);
 //echo Html::button('Добавить цену на услугу', ['class' => 'btn btn-success']);
 //echo Html::endTag('div');
-
-echo '<p>' . Html::img($service->getImage('price_img'), ['class'=>"img-rounded"]) . '</p>';
+if (!empty($service->price_img)) {
+    echo Html::beginTag('div', ['style' => 'width: 380px']);
+    echo Html::a('×',
+        ['/admin/service/delete-image', 'id' => $service->id, 'tab' => 'price', 'attribute' => 'price_img'],
+        ['class' => 'close',  'aria-hidden' => 'true']
+    );
+    echo '<p>' . Html::img($service->getImage('price_img'),
+            [
+                'class'=>"img-rounded",
+                'style' => 'max-height: 219px; max-width: 360px'
+            ]
+        ) . '</p>';
+    echo Html::endTag('div');
+}
 echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
 ActiveForm::end();
-?>

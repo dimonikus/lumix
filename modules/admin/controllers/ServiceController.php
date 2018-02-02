@@ -146,4 +146,15 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
 
         return $this->redirect('/admin/service/index');
     }
+
+    public function actionDeleteImage($id, $tab, $attribute)
+    {
+        $model = Service::find()->where(['id' => $id])->one();
+        $img = new ImageHelper();
+        $img->remove($model->$attribute);
+        $model->$attribute = null;
+        $model->save();
+
+        return $this->redirect('/admin/service/edit?id=' . $model->id . '&tab=' . $tab);
+    }
 }

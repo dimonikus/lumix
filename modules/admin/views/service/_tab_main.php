@@ -35,7 +35,19 @@ echo $form->field($service, 'description')->widget(TinyMce::className(), [
 ]);
 
 echo $form->field($service, 'main_img')->fileInput();
-echo '<p>' . Html::img($service->getImage('main_img'), ['class'=>"img-rounded"]) . '</p>';
+if (!empty($service->main_img)) {
+    echo Html::beginTag('div', ['style' => 'width: 770px']);
+    echo Html::a('×',
+        ['/admin/service/delete-image', 'id' => $service->id, 'tab' => 'main', 'attribute' => 'main_img'],
+        ['class' => 'close',  'aria-hidden' => 'true']
+    );
+    echo '<p>' . Html::img($service->getImage('main_img'),
+            [
+                'class'=>"img-rounded",
+                'style' => 'max-height: 400px; max-width: 750px'
+            ]) . '</p>';
+    echo Html::endTag('div');
+}
 echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
 ActiveForm::end();
 ?>

@@ -396,7 +396,7 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
 #navigation ul ul li { height: 0; -webkit-transition: all .25s ease; -moz-transition: all .25s ease; -ms-transition: all .25s ease; -o-transition: all .25s ease; transition: all .25s ease; }
 #navigation li:hover > ul { left: auto; }
 #navigation.align-right li:hover > ul { left: auto; right: 0; }
-#navigation li:hover > ul > li { height: 35px; }
+#navigation li:hover > ul > li { height: auto; }
 #navigation ul ul ul { margin-left: 100%; top: 0; }
 #navigation.align-right ul ul ul { margin-left: 0; margin-right: 100%; }
 
@@ -404,6 +404,7 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
     border-bottom: 1px solid rgba(150, 150, 150, 0.15);
     padding: 15px;
     width: 170px;
+    line-height: 20px;
     font-size: 13px;
     text-decoration: none;
     color: #fff;

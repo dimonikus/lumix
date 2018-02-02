@@ -25,7 +25,20 @@ echo $form->field($model, 'description')->textarea(['rows' => 6]);
 
 echo $form->field($model, 'image')->fileInput();
 
-echo '<p>' . Html::img($model->getImage(), ['class'=>"img-rounded"]) . '</p>';
+if (!empty($model->image)) {
+    echo Html::beginTag('div', ['style' => 'width: 710px']);
+    echo Html::a('×',
+        ['/admin/default/delete-block-image', 'block' => 'app\models\BlockPrices', 'attribute' => 'image'],
+        ['class' => 'close',  'aria-hidden' => 'true']
+    );
+    echo '<p>' . Html::img($model->getImage(),
+            [
+                'class'=>"img-rounded",
+                'style' => 'max-height: 200px; max-width: 700px'
+            ]
+        ) . '</p>';
+    echo Html::endTag('div');
+}
 
 echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
 
