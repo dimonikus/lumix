@@ -89,4 +89,16 @@ class DefaultController extends AdminController
     {
         echo 'hello';
     }
+
+    public function actionDeleteBlockImage($block, $attribute)
+    {
+        if ($model = $block::find()->one()) {
+            $image = new ImageHelper();
+            $image->remove($model->$attribute);
+            $model->$attribute = null;
+            $model->save();
+        }
+
+        return $this->redirect(\Yii::$app->request->referrer);
+    }
 }
