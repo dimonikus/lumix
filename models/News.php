@@ -4,7 +4,8 @@ namespace app\models;
 
 use app\modules\admin\models\Service;
 use Yii;
-use yii\helpers\BaseInflector;
+use app\modules\admin\behaviors\SluggableBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "news".
@@ -92,13 +93,18 @@ class News extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeSave($insert)
+    public function behaviors()
     {
-        $old_name = $this->getOldAttribute('name');
-        if ($this->name != $old_name) {
-            $this->url = BaseInflector::transliterate(mb_strtolower($this->name));
-        }
+        $behaviors = [
+            SluggableBehavior::className() => [
+                'class' => SluggableBehavior::className(),
+                'ensureUnique' => true,
+                'attribute' => 'name',
+                'slugAttribute' => 'url',
+            ],
 
-        return parent::beforeSave($insert);
+        ];
+
+        return ArrayHelper::merge(parent::behaviors(), $behaviors);
     }
 }

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\modules\admin\models\Service;
-
+use kartik\date\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
 /* @var $form yii\widgets\ActiveForm */
@@ -43,7 +43,16 @@ use app\modules\admin\models\Service;
 
     <?= $form->field($model, 'status')->dropDownList($model::getStatusList()) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->widget(DatePicker::className(), [
+        'options' => ['placeholder' => ''],
+        'type' => DatePicker::TYPE_COMPONENT_APPEND,
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'autoclose'=>true,
+            'todayHighlight' => true,
+            'todayBtn' => true,
+        ]
+    ]) ?>
 
     <?= $form->field($model, 'image')->fileInput() ?>
 

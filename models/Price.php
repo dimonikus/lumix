@@ -30,8 +30,8 @@ class Price extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-//            [['name', 'price', 'service_id'], 'required'],
-            [['price', 'service_id', 'index'], 'integer'],
+            [['price'], 'number', 'numberPattern' => '/^\s*[-+]?[0-9]*[.]?[0-9]+([eE][-+]?[0-9]+)?\s*$/'],
+            [['service_id', 'index'], 'integer'],
             [['name'], 'string', 'max' => 64],
         ];
     }
