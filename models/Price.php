@@ -31,7 +31,7 @@ class Price extends \yii\db\ActiveRecord
     {
         return [
             [['price'], 'number', 'numberPattern' => '/^\s*[-+]?[0-9]*[.]?[0-9]+([eE][-+]?[0-9]+)?\s*$/'],
-            [['service_id', 'index'], 'integer'],
+            [['service_id', 'index', 'from_price'], 'integer'],
             [['name'], 'string', 'max' => 64],
         ];
     }
@@ -45,6 +45,7 @@ class Price extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название услуги',
             'price' => 'Цена',
+            'from_price' => 'От',
             'service_id' => 'Service ID',
             'index' => 'Index',
         ];

@@ -16,6 +16,7 @@ class m171125_231156_create_price_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(64)->notNull(),
             'price' => $this->float()->notNull(),
+            'from_price' => $this->integer(2)->notNull()->defaultValue(0),
             'service_id' => $this->integer()->notNull(),
             'index' => $this->integer()->notNull()->defaultValue(100),
         ]);
