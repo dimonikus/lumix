@@ -9,11 +9,11 @@ $classAndStyle = 'class="not-visible-price" style="display: none"';
 <div class="space-medium">
     <div class="container">
         <div class="row">
-            <?php foreach ($services as $service): ?>
+            <?php foreach ($services as $service): $count = 0; ?>
             <?php if (isset($service->price) && !empty($service->price)): ?>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="price-block outline mb30">
-                    <?php if ($service->price_img): $count = 0; ?>
+                    <?php if ($service->price_img): ?>
                     <div class="price-img">
                         <img src="<?= $service->getImage('price_img') ?>" class="img-responsive" alt="">
                     </div>
