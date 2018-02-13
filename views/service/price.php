@@ -24,7 +24,7 @@ $classAndStyle = 'class="not-visible-price" style="display: none"';
                         <ul class="listnone mb40 text-uppercase">
                             <?php foreach ($service->price as $pr): ?>
                                 <?php $count++ ?>
-                            <li <?= $count > 4 ? $classAndStyle : '' ?>>
+                            <li <?= $count > 7 ? $classAndStyle : '' ?>>
                                 <?= $pr->name ?>
                                 <span class="meta-price">
                                     <?= $pr->from_price ? 'от' : '' ?>
@@ -32,7 +32,7 @@ $classAndStyle = 'class="not-visible-price" style="display: none"';
                                 </span>
                             </li>
                             <?php endforeach; ?>
-                            <?php if ($count > 4): ?>
+                            <?php if ($count > 7): ?>
                             <div class="text-right btn-link tog_btn">
                                 весь прайс
                             </div>
