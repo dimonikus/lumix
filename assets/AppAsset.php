@@ -40,7 +40,7 @@ class AppAsset extends AssetBundle
         'js/sticky-header.js',
         'js/owl.carousel.min.js',
         'js/testimonial-carousel.js',
-//        "js/bootstrap.min.js",
+        "js/site.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',

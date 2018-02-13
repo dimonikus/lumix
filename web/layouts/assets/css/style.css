@@ -833,10 +833,12 @@ search-query:focus + button {z-index: 3;}
 .price-block ul li {
     font-size: 12px;
     color: #2f2e2c;
+    justify-content: space-between;
+    display: flex;
     margin-bottom: 5px;
     font-weight: 700;
     letter-spacing: 1px;
-    line-height: 30px;
+    line-height: 20px;
     border-bottom: dotted;
     border-width: 1px;
 }
@@ -844,7 +846,14 @@ search-query:focus + button {z-index: 3;}
 .meta-price {
     color: #d30050;
     font-weight: 800;
-    position:relative;float:right;
+    white-space: nowrap;
+    margin-left: 10px;
+    position: relative;
+    float: right;
+}
+
+.tog_btn:hover {
+    cursor: pointer;
 }
 
 .price-rel-cat {
