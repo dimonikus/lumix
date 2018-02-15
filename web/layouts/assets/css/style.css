@@ -852,7 +852,7 @@ search-query:focus + button {z-index: 3;}
     float: right;
 }
 
-.row.myrow {
+.row.row_flex {
     flex-wrap: wrap;
     display: -webkit-box; 
     display: -moz-box;

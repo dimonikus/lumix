@@ -8,7 +8,7 @@ $classAndStyle = 'class="not-visible-price" style="display: none"';
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'Pricing')]) ?>
 <div class="space-medium">
     <div class="container">
-        <div class="row myrow">
+        <div class="row row_flex">
             <?php foreach ($services as $service): $count = 0; ?>
             <?php if (isset($service->price) && !empty($service->price)): ?>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
