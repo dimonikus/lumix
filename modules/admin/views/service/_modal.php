@@ -10,6 +10,7 @@ use yii\bootstrap\ActiveForm;
 $modalForm = ActiveForm::begin(['action' => '/admin/service/add-new-price']);
 echo $modalForm->field($model, 'name')->textInput();
 echo $modalForm->field($model, 'price')->textInput();
+echo $modalForm->field($model, 'from_price')->checkbox();
 echo $modalForm->field($model, 'service_id')->hiddenInput()->label(false);
 echo $modalForm->field($model, 'id')->hiddenInput()->label(false);
 echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);

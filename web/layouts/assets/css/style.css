@@ -824,7 +824,7 @@ search-query:focus + button {z-index: 3;}
 
 .price-title {
     font-size: 20px;
-    line-height: 36px;
+    line-height: 25px;
 }
 
 .price-content {
@@ -833,10 +833,12 @@ search-query:focus + button {z-index: 3;}
 .price-block ul li {
     font-size: 12px;
     color: #2f2e2c;
+    justify-content: space-between;
+    display: flex;
     margin-bottom: 5px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    line-height: 30px;
+    font-weight: 0;
+    letter-spacing: 0px;
+    line-height: 20px;
     border-bottom: dotted;
     border-width: 1px;
 }
@@ -844,7 +846,23 @@ search-query:focus + button {z-index: 3;}
 .meta-price {
     color: #d30050;
     font-weight: 800;
-    position:relative;float:right;
+    white-space: nowrap;
+    margin-left: 10px;
+    position: relative;
+    float: right;
+}
+
+.row.row_flex {
+    flex-wrap: wrap;
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+}
+
+.tog_btn:hover {
+    cursor: pointer;
 }
 
 .price-rel-cat {

@@ -58,7 +58,8 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
                                     <li>
                                         <?= $pr->name ?>
                                         <span class="meta-price">
-                                            <?= $pr->price ?>&nbsp;₴
+                                            <?= $pr->from_price ? 'от' : '' ?>
+                                            <?= \Yii::$app->formatter->asCurrency($pr->price, 'UAH') ?>
                                         </span>
                                     </li>
                                     <?php endforeach; ?>

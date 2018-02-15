@@ -7,7 +7,7 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'Service List')]) ?>
 <div class="space-medium">
     <div class="container">
-        <div class="row">
+        <div class="row row_flex">
             <?php foreach ($services as $service): ?>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="service-block mb30 outline">
