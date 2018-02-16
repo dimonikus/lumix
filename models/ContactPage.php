@@ -74,4 +74,38 @@ class ContactPage extends \yii\db\ActiveRecord
     {
         return  str_replace(';', '<br>', $string);
     }
+
+    public static function getMainPhone()
+    {
+        $phone = '';
+        $cache = Yii::$app->getCache();
+        $contact = $cache->get('contact');
+        if ($contact === false) {
+            $contact = self::find()->one();
+            $cache->set('contact', $contact, 6000);
+        }
+        if ($contact) {
+            $phones = explode(';', $contact->phone);
+            $phone = current($phones);
+        }
+
+        return $phone;
+    }
+
+    public static function getMainOpen()
+    {
+        $time = '';
+        $cache = Yii::$app->getCache();
+        $contact = $cache->get('contact');
+        if ($contact === false) {
+            $contact = self::find()->one();
+            $cache->set('contact', $contact, 6000);
+        }
+        if ($contact) {
+            $times = explode(';', $contact->opening_hours);
+            $time = current($times);
+        }
+
+        return $time;
+    }
 }

@@ -42,7 +42,7 @@ $contact = \app\models\ContactPage::find()->one();
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <div class="call-block">
-                            <h3 class="call-no">+38 (068) 140 33 37</h3>
+                            <h3 class="call-no"><?= \app\models\ContactPage::getMainPhone() ?></h3>
                             <p class="call-text">
                                 <?= Yii::t('app', 'Need any help') ?>?
                             </p>
@@ -50,7 +50,7 @@ $contact = \app\models\ContactPage::find()->one();
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
                         <div class="time-block">
-                            <h3 class="time">Пн-Вс: с 9:00 до 20:00</h3>
+                            <h3 class="time"><?= \app\models\ContactPage::getMainOpen() ?></h3>
                             <p class="call-text">
                                 <?= Yii::t('app', 'Opening Timing') ?>
                             </p>
