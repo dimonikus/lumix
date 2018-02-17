@@ -6,6 +6,8 @@ use app\modules\admin\models\Service;
 use Yii;
 use app\modules\admin\behaviors\SluggableBehavior;
 use yii\helpers\ArrayHelper;
+use yii\helpers\StringHelper;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "news".
@@ -106,5 +108,47 @@ class News extends \yii\db\ActiveRecord
         ];
 
         return ArrayHelper::merge(parent::behaviors(), $behaviors);
+    }
+
+    public static function getCategories()
+    {
+        $catId = self::find()
+            ->select('category')
+            ->where(['status' => self::STATUS_PUBLISHED])
+            ->groupBy('category')
+            ->asArray()
+            ->all();
+
+        $catId = ArrayHelper::map($catId, 'category', 'category');
+        $service = Service::find()->where(['id' => $catId])->all();
+
+        $categories = ArrayHelper::map($service, 'url', 'name');
+
+        return !empty($categories) ? $categories : [];
+    }
+
+    public static function getRecentPost()
+    {
+        return self::find()->where(['status' => self::STATUS_PUBLISHED])->limit(3)->all();
+    }
+
+    public function getShortDescription()
+    {
+        return StringHelper::truncateWords($this->short_description, 10);
+    }
+
+    public static function getNewsDate()
+    {
+        $dates = [];
+        $allNews = self::find()
+            ->where(['status' => self::STATUS_PUBLISHED])
+            ->orderBy(['date' => SORT_DESC])
+            ->all();
+
+        foreach ($allNews as $news) {
+            $dates[date("Y_m", strtotime($news->date))] = $news->date;
+        }
+
+        return $dates;
     }
 }
