@@ -1,6 +1,6 @@
 <?php
 /* @var $service \app\modules\admin\models\Service */
-/* @var $services object */
+/* @var $post \app\models\News */
 $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 $newsPath = Yii::$app->urlManager->createUrl('/news/index') . '/';
 ?>
