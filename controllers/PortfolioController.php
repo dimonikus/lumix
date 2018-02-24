@@ -40,7 +40,12 @@ class PortfolioController extends Controller
 
     public function actionView($slug)
     {
+        /**
+         * @var Service $model
+         */
+        $model = Service::findOne(['url' => $slug]);
+        $images = $model->portfolio ? $model->portfolio : [];
 
-        return $this->render('view');
+        return $this->render('view', ['images' => $images]);
     }
 }
