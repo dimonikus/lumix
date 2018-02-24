@@ -2,10 +2,13 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Images;
+use app\modules\admin\models\ImageHelper;
 use Yii;
 use app\models\News;
 use app\models\NewsSearch;
 use app\modules\admin\controllers\AdminController;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -40,7 +43,43 @@ class PortfolioController extends AdminController
 
     public function actionView($id)
     {
-        return $this->render('view', ['id' => $id]);
+        $model = Images::find()->andWhere(['service_id' => $id])->all();
+
+        return $this->render('view', ['model' => $model, 'id' => $id]);
+    }
+
+    public function actionFileUpload($id)
+    {
+        if (\Yii::$app->request->isPost) {
+            $image = new ImageHelper();
+            $model = new Images();
+            $model->load(\Yii::$app->request->post());
+            $model->service_id = $id;
+            $model->name = $image->upload($model, 'name');
+            if ($model->save()) {
+                return Json::encode(true);
+            } else {
+                return Json::encode($model->getErrors());
+            }
+        }
+
+        return Json::encode(false);
+    }
+
+    public function actionFileDelete()
+    {
+        if ($id = Yii::$app->request->post('key')) {
+            $model = Images::find()->where(['id' => $id])->one();
+            $img = new ImageHelper();
+            $img->remove($model->name);
+            if ($model->delete()) {
+                return Json::encode(true);
+            } else {
+                return Json::encode($model->getErrors());
+            }
+        }
+
+        return Json::encode(false);
     }
 
     /**
