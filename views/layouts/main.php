@@ -103,6 +103,18 @@ $contact = \app\models\ContactPage::find()->one();
 <!--                            </ul>-->
                         </li>
                         <li>
+                            <a href="<?= Url::to('/portfolio') ?>"
+                               title="<?= Yii::t('app', 'Portfolio') ?>"
+                               class="animsition-link">
+                                <?= Yii::t('app', 'Portfolio') ?>
+                            </a>
+                            <ul>
+                                <?= \app\modules\admin\models\Service::getMenuItem() ?>
+                                <!--                                <li><a href="service-list.html" title="Service List">Service List</a></li>-->
+                                <!--                                <li><a href="service-detail.html" title="Service Detail">Service Detail</a></li>-->
+                            </ul>
+                        </li>
+                        <li>
                             <a href="<?= Url::to('/price') ?>"
                                title="<?= Yii::t('app', 'Pricing') ?>"
                                class="animsition-link">

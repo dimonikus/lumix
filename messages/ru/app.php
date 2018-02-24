@@ -22,4 +22,5 @@ return [
 'Categories' => 'Категория',
 'Recent Post' => 'Последние новости',
 'Archives' => 'Архив',
+'Portfolio' => 'Портфолио',
 ];
