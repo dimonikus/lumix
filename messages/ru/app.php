@@ -19,4 +19,8 @@ return [
 'News' => 'Новости',
 'Quick Links' => 'Ссылки',
 'View Pricing' => 'Наши цены',
+'Categories' => 'Категория',
+'Recent Post' => 'Последние новости',
+'Archives' => 'Архив',
+'Portfolio' => 'Портфолио',
 ];

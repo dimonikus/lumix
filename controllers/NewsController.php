@@ -11,6 +11,7 @@ namespace app\controllers;
 use app\models\News;
 use app\modules\admin\models\Service;
 use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 class NewsController extends Controller
@@ -34,13 +35,22 @@ class NewsController extends Controller
     /**
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($category = null, $date = null)
     {
-        $news = News::find()->where(['status' => News::STATUS_PUBLISHED])->all();
-        $service = Service::find()->orderBy('index asc')->all();
-        $categories = ArrayHelper::map($service, 'id', 'name');
+        $query = News::find()->where(['status' => News::STATUS_PUBLISHED]);
+        if ($category) {
+            $cId = Service::find()->select('id')->andWhere(['url' => $category])->one();
+            $query->andWhere(['category' => $cId]);
+        }
+        if ($date) {
+            $fDate = explode('_', $date);
+            $year = $fDate[0];
+            $month = $fDate[1];
+            $query->andWhere("YEAR(date) = $year and MONTH(date) = $month");
+        }
+        $news = $query->all();
 
-        return $this->render('index', compact('news', 'categories'));
+        return $this->render('index', compact('news'));
     }
 
     /**

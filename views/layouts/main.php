@@ -42,7 +42,7 @@ $contact = \app\models\ContactPage::find()->one();
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <div class="call-block">
-                            <h3 class="call-no">+38 (068) 140 33 37</h3>
+                            <h3 class="call-no"><?= \app\models\ContactPage::getMainPhone() ?></h3>
                             <p class="call-text">
                                 <?= Yii::t('app', 'Need any help') ?>?
                             </p>
@@ -50,15 +50,17 @@ $contact = \app\models\ContactPage::find()->one();
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
                         <div class="time-block">
-                            <h3 class="time">Пн-Вс: с 9:00 до 20:00</h3>
+                            <h3 class="time"><?= \app\models\ContactPage::getMainOpen() ?></h3>
                             <p class="call-text">
                                 <?= Yii::t('app', 'Opening Timing') ?>
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
-                        <div class="top-btn"> <a href="contact.html" class="btn btn-default">Make Appointment</a> </div>
-                    </div>
+                    <?php /*
+<!--                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">-->
+<!--                        <div class="top-btn"> <a href="contact.html" class="btn btn-default">Make Appointment</a> </div>-->
+<!--                    </div>-->
+                    */ ?>
                 </div>
             </div>
         </div>
@@ -71,12 +73,16 @@ $contact = \app\models\ContactPage::find()->one();
                 <div class="navigation align-center" id="navigation">
                     <ul>
                         <li class="active">
-                            <a href="<?= Yii::$app->homeUrl ?>" title="Home" class="animsition-link">
+                            <a href="<?= Yii::$app->homeUrl ?>"
+                               title="<?= Yii::t('app', 'Home') ?>"
+                               class="animsition-link">
                                 <?= Yii::t('app', 'Home') ?>
                             </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to('/service') ?>" title="Service List" class="animsition-link">
+                            <a href="<?= Url::to('/service') ?>"
+                               title="<?= Yii::t('app', 'Service List') ?>"
+                               class="animsition-link">
                                 <?= Yii::t('app', 'Service List') ?>
                             </a>
                             <ul>
@@ -97,12 +103,26 @@ $contact = \app\models\ContactPage::find()->one();
 <!--                            </ul>-->
                         </li>
                         <li>
-                            <a href="<?= Url::to('/price') ?>" title="Pricing" class="animsition-link">
+                            <a href="javascript:void(0)"
+                               title="<?= Yii::t('app', 'Portfolio') ?>"
+                               class="animsition-link">
+                                <?= Yii::t('app', 'Portfolio') ?>
+                            </a>
+                            <ul>
+                                <?= \app\models\Images::getMenuItem() ?>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to('/price') ?>"
+                               title="<?= Yii::t('app', 'Pricing') ?>"
+                               class="animsition-link">
                                 <?= Yii::t('app', 'Pricing') ?>
                             </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to('/contact') ?>" title="Contact Us" class="animsition-link">
+                            <a href="<?= Url::to('/contact') ?>"
+                               title="<?= Yii::t('app', 'Contact') ?>"
+                               class="animsition-link">
                                 <?= Yii::t('app', 'Contact') ?>
                             </a>
                         </li>

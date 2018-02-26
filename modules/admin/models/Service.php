@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\models;
 
+use app\models\Images;
 use app\models\Price;
 use Yii;
 use app\modules\admin\behaviors\SluggableBehavior;
@@ -51,6 +52,11 @@ class Service extends \yii\db\ActiveRecord
     public function getPrice()
     {
         return $this->hasMany(Price::className(), ['service_id' => 'id']);
+    }
+
+    public function getPortfolio()
+    {
+        return $this->hasMany(Images::className(), ['service_id' => 'id']);
     }
 
     public function getImage($attribute)

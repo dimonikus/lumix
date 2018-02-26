@@ -1,6 +1,6 @@
 <?php
 /* @var $service \app\modules\admin\models\Service */
-/* @var $services object */
+/* @var $post \app\models\News */
 $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 $newsPath = Yii::$app->urlManager->createUrl('/news/index') . '/';
 ?>
@@ -74,10 +74,10 @@ $newsPath = Yii::$app->urlManager->createUrl('/news/index') . '/';
                                     <?= Yii::t('app', 'Categories') ?>
                                 </h3>
                                 <ul class="listnone pinside40 outline">
-                                    <?php foreach ($categories as $url => $name): ?>
+                                    <?php foreach (\app\models\News::getCategories() as $url => $name): ?>
                                     <li>
                                         <i class="fa fa-caret-right"></i>
-                                        <a href="<?= $url ?>"><?= $name ?></a>
+                                        <a href="<?= '/news/category/' . $url ?>"><?= $name ?></a>
                                     </li>
                                     <?php endforeach; ?>
                                 </ul>
@@ -85,59 +85,63 @@ $newsPath = Yii::$app->urlManager->createUrl('/news/index') . '/';
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="widget widget-recent-post">
-                                <h3 class="widget-title">Recent Post</h3>
+                                <h3 class="widget-title">
+                                    <?= Yii::t('app', 'Recent Post') ?>
+                                </h3>
                                 <div class="listnone pinside40 outline">
+                                    <?php
+                                        $rPost = \app\models\News::getRecentPost();
+                                        if(!empty($rPost)):
+                                            foreach ($rPost as $post):
+                                    ?>
                                     <div class="recent-block">
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-2 col-xs-3">
                                                 <div class="recent-img">
-                                                    <a href="#" class="imghover"><img src="images/recent-post-1.jpg" class="img-responsive" alt=""></a>
+                                                    <a href="<?= $newsPath . $post->url ?>" class="imghover">
+                                                        <img src="images/recent-post-1.jpg"
+                                                             class="img-responsive" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-8 col-sm-10 col-xs-9">
-                                                <h3 class="recent-title"><a href="#" class="title">The Easiest Way to Remove Long Wearing Matte Liquid Lipstick</a></h3>
-                                                <div class="meta"><span class="meta-date">24 December,2017</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="recent-block">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 col-sm-2 col-xs-3">
-                                                <div class="recent-img">
-                                                    <a href="#" class="imghover"><img src="images/recent-post-2.jpg" class="img-responsive" alt=""></a>
+                                                <h3 class="recent-title">
+                                                    <a href="<?= $newsPath . $post->url ?>" class="title">
+                                                        <?= $post->getShortDescription() ?>
+                                                    </a>
+                                                </h3>
+                                                <div class="meta">
+                                                    <span class="meta-date">
+                                                        <?= Yii::$app->formatter->asDate($post->date, 'long') ?>
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-9">
-                                                <h3 class="recent-title"><a href="#" class="title">Secrets to Get Your Blush to Look as Natural as Possible</a></h3>
-                                                <div class="meta"><span class="meta-date">23 December,2017</span></div>
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="recent-block">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 col-sm-2 col-xs-3">
-                                                <div class="recent-img">
-                                                    <a href="#" class="imghover"><img src="images/recent-post-3.jpg" class="img-responsive" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-9">
-                                                <h3 class="recent-title"><a href="#" class="title">Ask Your Wedding Stylist for These Fall Hair Trends</a></h3>
-                                                <div class="meta"><span class="meta-date">22 December,2017</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php endforeach; endif; ?>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="widget widget-archives">
-                                <h3 class="widget-title">archives</h3>
+                                <h3 class="widget-title">
+                                    <?= Yii::t('app', 'Archives') ?>
+                                </h3>
                                 <ul class="listnone pinside40 outline">
-                                    <li><i class="fa fa-caret-right"></i> <a href="#">March</a> <strong>(2016)</strong></li>
-                                    <li><i class="fa fa-caret-right"></i> <a href="#">February</a> <strong>(2016)</strong></li>
-                                    <li><i class="fa fa-caret-right"></i> <a href="#">January</a> <strong>(2016)</strong></li>
-                                    <li><i class="fa fa-caret-right"></i> <a href="#">December</a> <strong>(2015)</strong></li>
-                                    <li><i class="fa fa-caret-right"></i> <a href="#">November</a> <strong>(2015)</strong></li>
+                                    <?php
+                                    $dates = \app\models\News::getNewsDate();
+                                    foreach ($dates as $key => $date):
+                                    ?>
+                                    <li>
+                                        <i class="fa fa-caret-right"></i>
+                                        <a href="<?= '/news/date/' . $key ?>">
+                                            <?= Yii::$app->formatter->asDate($date, 'php:F') ?>
+                                        </a>
+                                        <strong>
+                                            (<?= Yii::$app->formatter->asDate($date, 'php:Y') ?>)
+                                        </strong>
+                                    </li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
                         </div>
