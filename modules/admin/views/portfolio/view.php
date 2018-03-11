@@ -3,10 +3,6 @@ use kartik\file\FileInput;
 use yii\helpers\Url;
 ?>
 <h1>Портфолио</h1>
-<p class="alert alert-danger" role="alert">
-    <strong>Внимание!</strong><br>
-    Раздел находится в стадии разработки
-</p>
 
 <?php
 $initialPreview = [];

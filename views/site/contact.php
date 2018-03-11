@@ -20,7 +20,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                 <div class="contact-info">
                     <div class="logo mb40">
                         <a href="<?= Yii::$app->getHomeUrl() ?>">
-                            <img src="<?= $assetPath ?>/images/logo-white.png" class="img-responsive" alt="">
+                            <img src="<?= $assetPath ?>/images/logo.png" class="img-responsive" alt="">
                         </a>
                     </div>
                     <ul class="listnone">
@@ -57,40 +57,62 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="control-label" for="name"><?= Yii::t('app', 'Name') ?> :</label>
-                                <input id="name" name="name" type="text" class="form-control" placeholder=" " required>
+                                <label class="control-label" for="name">
+                                    <?= Yii::t('app', 'Name') ?> :
+                                </label>
+                                <span class="d-inline-block tooltip_message"
+                                      tabindex="0" data-toggle="tooltip" id="tt_name">
+                                    <input name="name" type="text" class="form-control" placeholder=" " required>
+                                </span>
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label class=" control-label" for="email"><?= Yii::t('app', 'email') ?> :</label>
-                                <input id="email" name="email" type="text" class="form-control" placeholder=" " required>
+                                <label class=" control-label" for="email">
+                                    <?= Yii::t('app', 'email') ?> :
+                                </label>
+                                <span class="d-inline-block tooltip_message"
+                                      tabindex="0" data-toggle="tooltip" id="tt_email">
+                                    <input name="email" type="text" class="form-control" placeholder=" " required>
+                                </span>
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label class=" control-label" for="phone"><?= Yii::t('app', 'Phone') ?> :</label>
-                                <input id="phone" name="phone" type="text" class="form-control" placeholder=" " required>
+                                <label class=" control-label" for="phone">
+                                    <?= Yii::t('app', 'Phone') ?> :
+                                </label>
+                                <span class="d-inline-block tooltip_message"
+                                      tabindex="0" data-toggle="tooltip" id="tt_phone">
+                                    <input name="phone" type="text" class="form-control" placeholder=" ">
+                                </span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label class=" control-label" for="subject"><?= Yii::t('app', 'Subject') ?> :</label>
-                                <input id="subject" name="subject" type="text" class="form-control" placeholder=" " required>
+                                <label class=" control-label" for="subject">
+                                    <?= Yii::t('app', 'Subject') ?> :
+                                </label>
+                                <input name="subject" type="text" class="form-control" placeholder=" " required>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label class=" control-label" for="textarea"><?= Yii::t('app', 'Message') ?> :</label>
-                                <textarea class="form-control" id="textarea" name="textarea" rows="6" placeholder=" "></textarea>
+                                <label class="control-label" for="message">
+                                    <?= Yii::t('app', 'Message') ?> :
+                                </label>
+                                <span class="d-inline-block tooltip_message"
+                                      tabindex="0" data-toggle="tooltip" id="tt_message">
+                                    <textarea class="form-control" name="message" rows="6" placeholder=" "></textarea>
+                                </span>
                             </div>
                         </div>
                         <!-- Button -->
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <a href="" id="singlebutton" name="singlebutton" class="btn btn-default">
+                                <a href="" id="send_btn" name="send_btn" class="btn btn-default">
                                     <?= Yii::t('app', 'send message') ?>
                                 </a>
                             </div>

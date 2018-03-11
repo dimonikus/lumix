@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use app\models\ContactPage;
+use app\models\Feedback;
 use app\models\MainBlocks;
 use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -71,5 +73,19 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionSendMessage()
+    {
+        $msg = ['success' => false, 'error' => ''];
+        $feedback = new Feedback();
+        $feedback->load(Yii::$app->request->post(), '');
+        if ($feedback->validate() && $feedback->save()) {
+            $msg['success'] = true;
+        } else {
+            $msg['error'] = $feedback->getErrors();
+        }
+
+        return Json::encode($msg);
     }
 }
