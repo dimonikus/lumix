@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 use app\models\BlockAbout;
+use app\models\BlockPortfolio;
 use app\models\BlockPrices;
 use app\models\BlockServices;
 use app\models\MainBlocks;
@@ -87,7 +88,16 @@ class DefaultController extends AdminController
 
     public function actionPortfoliosBlockWidget()
     {
-        echo 'hello';
+        if (!$model = BlockPortfolio::find()->one()) {
+            $model = new BlockPortfolio();
+        }
+        $dropDown = Service::getServiceForDropDown();
+        if (\Yii::$app->request->isPost) {
+            $model->load(\Yii::$app->request->post());
+            if ($model->save()) \Yii::$app->session->setFlash('success', 'Блок портфолио сохранен успешно.');
+        }
+
+        return $this->render('block_portfolio', compact('model','dropDown'));
     }
 
     public function actionDeleteBlockImage($block, $attribute)
