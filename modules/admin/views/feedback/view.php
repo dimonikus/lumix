@@ -13,18 +13,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Сообщения', 'url' => ['in
         'message',
         'subject',
         'email',
-        'date_create',
-//        [
-//            'attribute' => 'description',
-//            'format' => 'raw',
-//        ],
-//        [
-//            'attribute' => 'category',
-//            'value' => $model->service->name,
-//        ],
-//        [
-//            'attribute' => 'status',
-//            'value' => $model->getStatus(),
-//        ],
+        'date_create:datetime',
     ],
 ]) ?>

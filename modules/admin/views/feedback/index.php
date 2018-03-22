@@ -34,7 +34,8 @@ use yii\grid\GridView;
         ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'headerOptions' => ['width' => '30'],
+            'template' => '{view} {delete}',
+            'headerOptions' => ['width' => '60'],
         ],
     ],
 ]); ?>
