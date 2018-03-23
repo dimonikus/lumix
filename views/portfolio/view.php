@@ -12,7 +12,7 @@
             <?php foreach ($images as $image): ?>
             <div class="col-lg-4 col-md-4 col-sm-6 co l-xs-12">
                 <div class="portfoio-img">
-                    <a href="#" class="imghover">
+                    <a href="javascript:void(0)">
                         <img src="<?= $image->getImagePath() ?>"
                              class="img-responsive"
                              alt=""

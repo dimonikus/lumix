@@ -1,15 +1,27 @@
 <?php
 /* @var $this \yii\web\View */
 /* @var $block \app\models\MainBlocks */
+/* @var $mainBlock \app\models\BlockMain */
 /* @var $model \app\models\MainBlocks[] */
 use yii\widgets\ActiveForm;
 use kartik\sortinput\SortableInput;
 use yii\helpers\Html;
 use kartik\alert\AlertBlock;
 ?>
+<h1>Главная страница сайта</h1>
 <div class="admin-default-index">
-    <h1>Главная страница сайта</h1>
-    <p>Редактирование блоков главной станицы</p>
+    <p class="alert alert-info" role="alert">Редактирование текста на главной станице</p>
+</div>
+<?php
+$mainForm = ActiveForm::begin(['action' => '/admin/default/main']);
+echo $mainForm->field($mainBlock, 'name')->label('Главный текст');
+echo $mainForm->field($mainBlock, 'description')->textarea(['rows' => 6])->label('описание');
+echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
+ActiveForm::end();
+?>
+<hr><br>
+<div class="admin-default-index">
+    <p class="alert alert-info" role="alert">Редактирование блоков главной станицы</p>
 </div>
 
 <?php

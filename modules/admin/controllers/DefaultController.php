@@ -2,6 +2,8 @@
 
 namespace app\modules\admin\controllers;
 use app\models\BlockAbout;
+use app\models\BlockMain;
+use app\models\BlockPortfolio;
 use app\models\BlockPrices;
 use app\models\BlockServices;
 use app\models\MainBlocks;
@@ -35,9 +37,27 @@ class DefaultController extends AdminController
                 : \Yii::$app->session->setFlash('warning', 'Главная страница сайта не сохранена!');
         }
 
+        if (!$mainBlock = BlockMain::find()->one()) {
+            $mainBlock = new BlockMain();
+        }
         $model = MainBlocks::find()->orderBy('index asc')->all();
 
-        return $this->render('index', compact('model'));
+        return $this->render('index', compact('model', 'mainBlock'));
+    }
+
+    public function actionMain()
+    {
+        if (!$mainBlock = BlockMain::find()->one()) {
+            $mainBlock = new BlockMain();
+        }
+        if (\Yii::$app->request->isPost) {
+            $mainBlock->load(\Yii::$app->request->post());
+            $mainBlock->save()
+                ? \Yii::$app->session->setFlash('success', 'Главная страница сайта сохранена!')
+                : \Yii::$app->session->setFlash('warning', 'Главная страница сайта не сохранена!');
+        }
+
+        return $this->redirect(\Yii::$app->request->referrer);
     }
 
     public function actionServicesBlockWidget()
@@ -87,7 +107,16 @@ class DefaultController extends AdminController
 
     public function actionPortfoliosBlockWidget()
     {
-        echo 'hello';
+        if (!$model = BlockPortfolio::find()->one()) {
+            $model = new BlockPortfolio();
+        }
+        $dropDown = Service::getServiceForDropDown();
+        if (\Yii::$app->request->isPost) {
+            $model->load(\Yii::$app->request->post());
+            if ($model->save()) \Yii::$app->session->setFlash('success', 'Блок портфолио сохранен успешно.');
+        }
+
+        return $this->render('block_portfolio', compact('model','dropDown'));
     }
 
     public function actionDeleteBlockImage($block, $attribute)

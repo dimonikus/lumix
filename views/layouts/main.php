@@ -137,14 +137,24 @@ $contact = \app\models\ContactPage::find()->one();
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="footer-widget bg-white pinside30 mb30">
+                <div class="footer-widget">
                     <div class="logo mb30">
                         <a href="<?= Yii::$app->getHomeUrl() ?>">
                             <img src="<?=$assetPath?>/images/logo.png" class="img-responsive" alt="">
                         </a>
                     </div>
-                    <p class="mb30">Cras ut mauris fermentum pulvinar us utempus magivamus molestie molestie pulvin estibulum acvehicula erurabitur arcuornare ipsum.</p>
-                    <div class="footer-social"><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-google-plus"></i></a></div>
+<!--                    <p class="mb30"></p>-->
+<!--                    <div class="footer-social">-->
+<!--                        <a href="#">-->
+<!--                            <i class="fa fa-twitter"></i>-->
+<!--                        </a>-->
+<!--                        <a href="#">-->
+<!--                            <i class="fa fa-facebook"></i>-->
+<!--                        </a>-->
+<!--                        <a href="#">-->
+<!--                            <i class="fa fa-google-plus"></i>-->
+<!--                        </a>-->
+<!--                    </div>-->
                 </div>
             </div>
             <div class="col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-6 col-xs-12">

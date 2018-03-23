@@ -43,6 +43,11 @@ AdminAsset::register($this);
             ['label' => 'Новости', 'url' => ['/admin/news/index']],
             ['label' => 'Портфолио', 'url' => ['/admin/portfolio/index']],
             ['label' => 'Контакты', 'url' => ['/admin/contact/index']],
+            Html::beginTag('li') .
+            Html::a('Сообщения <span class="badge badge-info">'.\app\models\Feedback::getNewMessageCount().'</span>',
+                '/admin/feedback/index',
+                ['class' => 'btn btn-link']).
+            Html::endTag('li'),
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/admin/admin/login']]
             ) : (
