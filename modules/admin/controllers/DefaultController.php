@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 use app\models\BlockAbout;
+use app\models\BlockMain;
 use app\models\BlockPortfolio;
 use app\models\BlockPrices;
 use app\models\BlockServices;
@@ -36,9 +37,27 @@ class DefaultController extends AdminController
                 : \Yii::$app->session->setFlash('warning', 'Главная страница сайта не сохранена!');
         }
 
+        if (!$mainBlock = BlockMain::find()->one()) {
+            $mainBlock = new BlockMain();
+        }
         $model = MainBlocks::find()->orderBy('index asc')->all();
 
-        return $this->render('index', compact('model'));
+        return $this->render('index', compact('model', 'mainBlock'));
+    }
+
+    public function actionMain()
+    {
+        if (!$mainBlock = BlockMain::find()->one()) {
+            $mainBlock = new BlockMain();
+        }
+        if (\Yii::$app->request->isPost) {
+            $mainBlock->load(\Yii::$app->request->post());
+            $mainBlock->save()
+                ? \Yii::$app->session->setFlash('success', 'Главная страница сайта сохранена!')
+                : \Yii::$app->session->setFlash('warning', 'Главная страница сайта не сохранена!');
+        }
+
+        return $this->redirect(\Yii::$app->request->referrer);
     }
 
     public function actionServicesBlockWidget()

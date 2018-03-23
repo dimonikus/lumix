@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\BlockMain;
 use app\models\ContactPage;
 use app\models\Feedback;
 use app\models\MainBlocks;
@@ -39,6 +40,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $main = BlockMain::find()->one();
         $model = MainBlocks::find()
             ->where(['checkbox' => MainBlocks::CHECKBOX_CHECKED])
             ->orderBy('index asc')
@@ -46,6 +48,7 @@ class SiteController extends Controller
 
         return $this->render('index', [
             'model' => $model,
+            'main' => $main,
         ]);
     }
 
