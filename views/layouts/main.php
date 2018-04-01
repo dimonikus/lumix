@@ -113,6 +113,13 @@ $contact = \app\models\ContactPage::find()->one();
                             </ul>
                         </li>
                         <li>
+                            <a href="<?= Url::to('/products') ?>"
+                               title="<?= Yii::t('app', 'Products') ?>"
+                               class="animsition-link">
+                                <?= Yii::t('app', 'Products') ?>
+                            </a>
+                        </li>
+                        <li>
                             <a href="<?= Url::to('/price') ?>"
                                title="<?= Yii::t('app', 'Pricing') ?>"
                                class="animsition-link">

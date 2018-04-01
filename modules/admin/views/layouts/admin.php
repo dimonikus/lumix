@@ -42,6 +42,7 @@ AdminAsset::register($this);
             ['label' => 'Услуги', 'url' => ['/admin/service/index']],
             ['label' => 'Новости', 'url' => ['/admin/news/index']],
             ['label' => 'Портфолио', 'url' => ['/admin/portfolio/index']],
+            ['label' => 'Продукция', 'url' => ['/admin/products/index']],
             ['label' => 'Контакты', 'url' => ['/admin/contact/index']],
             Html::beginTag('li') .
             Html::a('Сообщения <span class="badge badge-info">'.\app\models\Feedback::getNewMessageCount().'</span>',

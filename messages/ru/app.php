@@ -23,4 +23,5 @@ return [
 'Recent Post' => 'Последние новости',
 'Archives' => 'Архив',
 'Portfolio' => 'Портфолио',
+'Products' => 'Продукция',
 ];
