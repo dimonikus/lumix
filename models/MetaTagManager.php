@@ -11,6 +11,15 @@ namespace app\models;
 
 class MetaTagManager
 {
+    /**
+     * Constants for robots meta tag
+     * @link http://www.robotstxt.org/meta.html
+     */
+    const ROBOTS_INDEX_FOLLOW = 0;
+    const ROBOTS_NOINDEX_FOLLOW = 1;
+    const ROBOTS_INDEX_NOFOLLOW = 2;
+    const ROBOTS_NOINDEX_NOFOLLOW = 3;
+
     private $model;
     private $data;
     private $options;
@@ -18,6 +27,7 @@ class MetaTagManager
         'title' => 'Lumix Studio',
         'description' => 'Lumix Studio',
         'keywords' => 'Lumix Studio место, где профессионалы beauty сферы смогут удивить даже самого претензийного гостя',
+        'robots' => self::ROBOTS_INDEX_FOLLOW,
     ];
 
     private function createMetaTitle()
@@ -83,6 +93,21 @@ class MetaTagManager
         return $canonical;
     }
 
+    public function creteMetaRobots()
+    {
+        $robots = $this->getData('robots');
+        if (!is_int($robots) && $this->model) {
+            if (method_exists($this->model, 'getMetaRobots')) {
+                $robots = $this->model->getMetaRobots();
+            }
+        }
+        if (!is_int($robots)) {
+            $robots = $this->defaultData['robots'];
+        }
+
+        return $robots;
+    }
+
     function __construct($model, $data, $options)
     {
         $this->model = $model;
@@ -104,6 +129,7 @@ class MetaTagManager
         $description = $manager->createMetaDescription();
         $keywords = $manager->creteMetaKeywords();
         $canonical = $manager->createCanonical();
+        $robots = $manager->creteMetaRobots();
 
         if ($keywords) {
             \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $keywords],
@@ -116,6 +142,32 @@ class MetaTagManager
         if ($canonical) {
             \Yii::$app->view->registerLinkTag(['rel' => 'canonical', 'href' => $canonical],
                 'canonical');
+        }
+        if (is_int($robots)) {
+            self::registerMetaRobots($robots);
+        }
+    }
+
+    public static function registerMetaRobots($robots, $skipDefault = false, $name = 'robots')
+    {
+        if (empty($robots)) // default value
+        {
+            $robots = self::ROBOTS_INDEX_FOLLOW;
+        }
+
+        if ($robots == self::ROBOTS_NOINDEX_NOFOLLOW) {
+            $content = 'noindex, nofollow';
+        } elseif ($robots == self::ROBOTS_NOINDEX_FOLLOW) {
+            $content = 'noindex, follow';
+        } elseif ($robots == self::ROBOTS_INDEX_NOFOLLOW) {
+            $content = 'index, nofollow';
+        } else {
+            $content = 'index, follow';
+        }
+
+        if (!$skipDefault or ($robots != self::ROBOTS_INDEX_FOLLOW)) {
+            \Yii::$app->view->registerMetaTag(['name' => $name, 'content' => $content],
+                'robots');
         }
     }
 }
