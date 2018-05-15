@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\MetaTagManager;
 use app\models\Products;
 use app\modules\admin\models\Service;
 use Yii;
@@ -36,6 +37,7 @@ class ProductsController extends Controller
     public function actionIndex()
     {
         $products = Products::find()->all();
+        MetaTagManager::registerMetaTags();
 
         return $this->render('index', compact('products'));
     }
