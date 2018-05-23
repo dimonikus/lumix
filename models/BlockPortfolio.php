@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\admin\models\Service;
 use Yii;
 
 /**
@@ -54,5 +55,29 @@ class BlockPortfolio extends \yii\db\ActiveRecord
             'service_id_4' => Yii::t('app', 'Блок с фото 4'),
             'service_id_5' => Yii::t('app', 'Блок с фото 5'),
         ];
+    }
+
+    public function getImage($serviceId)
+    {
+        $path = '';
+        $images = Images::find()->where(['service_id' => $serviceId])->all();
+
+        if (!empty($images) && count($images) > 0) {
+            $i = random_int(0, count($images));
+            $model = isset($images[$i]) ? $images[$i] : current($images);
+            $path = $model->getImagePath();
+        }
+
+        return $path;
+    }
+
+    public function getUrl($serviceId)
+    {
+        $url = '#';
+        if ($service = Service::find()->where(['id' => $serviceId])->one()) {
+            $url = Yii::$app->urlManager->createUrl('/portfolio/' . $service->url);
+        }
+
+        return $url;
     }
 }

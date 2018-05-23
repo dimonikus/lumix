@@ -2,39 +2,26 @@
 
 namespace app\controllers;
 
+use app\models\MetaTagManager;
 use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
-use yii\web\Controller;
+use yii\helpers\VarDumper;
+use app\controllers\FrontendController;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
 
-class ServiceController extends Controller
+class ServiceController extends FrontendController
 {
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
-
     /**
      * @return string
      */
     public function actionIndex()
     {
         $services = Service::find()->orderBy('index asc')->all();
+        MetaTagManager::registerMetaTags();
 
         return $this->render('index', compact('services'));
     }
@@ -43,6 +30,7 @@ class ServiceController extends Controller
     {
         $serviceMenu = ArrayHelper::map(Service::find()->orderBy('index asc')->all(), 'url', 'name');
         $service = Service::findOne(['url' => $slug]);
+        MetaTagManager::registerMetaTags($service);
 
         return $this->render('view', compact('service', 'serviceMenu'));
     }
@@ -50,6 +38,7 @@ class ServiceController extends Controller
     public function actionPrice()
     {
         $services = Service::find()->orderBy('index asc')->all();
+        MetaTagManager::registerMetaTags();
 
         return $this->render('price', compact('services'));
     }

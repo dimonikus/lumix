@@ -8,13 +8,15 @@
 
 namespace app\widgets;
 
+use app\models\BlockPortfolio;
 use yii\base\Widget;
 
 class PortfoliosBlockWidget extends Widget
 {
     public function run()
     {
-        // todo load model
-        return $this->render('block_portfolios');
+        $model = BlockPortfolio::find()->one();
+
+        return $this->render('block_portfolios', compact('model'));
     }
 }
