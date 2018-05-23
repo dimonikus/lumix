@@ -10,29 +10,13 @@ use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
-use yii\web\Controller;
+use app\controllers\FrontendController;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
 
-class SiteController extends Controller
+class SiteController extends FrontendController
 {
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
-
     /**
      * Displays homepage.
      *

@@ -8,29 +8,13 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
-use yii\web\Controller;
+use app\controllers\FrontendController;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
 
-class ServiceController extends Controller
+class ServiceController extends FrontendController
 {
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
-
     /**
      * @return string
      */
