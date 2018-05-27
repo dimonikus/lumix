@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\MetaInfo;
 use app\models\Price;
 use app\modules\admin\models\ImageHelper;
 use app\modules\admin\models\Service;
@@ -113,19 +114,31 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
     public function actionEdit($id, $tab = 'preview')
     {
         $service = Service::findOne($id);
+        $seo = $service->getMetaInfo();
         $prices = Price::find()->andWhere(['service_id' => $id])->all();
         $newPrice = new Price();
         $image = new ImageHelper();
         if (\Yii::$app->request->isPost) {
-            $service->load(\Yii::$app->request->post());
-            $service->short_img = $image->upload($service, 'short_img');
-            $service->price_img = $image->upload($service, 'price_img');
-            $service->main_img = $image->upload($service, 'main_img');
-            if ($service->save()) {
-                \Yii::$app->session->setFlash('success', 'Изменения успешно сохранены!');
+            if ($tab === 'seo') {
+                $seo->load(\Yii::$app->request->post());
+                if ($seo->save()) {
+                    \Yii::$app->session->setFlash('success', 'Изменения успешно сохранены!');
+                } else {
+                    foreach ($seo->getErrors() as $error) {
+                        \Yii::$app->session->setFlash('danger', $error);
+                    }
+                }
             } else {
-                foreach ($service->getErrors() as $error) {
-                    \Yii::$app->session->setFlash('danger', $error);
+                $service->load(\Yii::$app->request->post());
+                $service->short_img = $image->upload($service, 'short_img');
+                $service->price_img = $image->upload($service, 'price_img');
+                $service->main_img = $image->upload($service, 'main_img');
+                if ($service->save()) {
+                    \Yii::$app->session->setFlash('success', 'Изменения успешно сохранены!');
+                } else {
+                    foreach ($service->getErrors() as $error) {
+                        \Yii::$app->session->setFlash('danger', $error);
+                    }
                 }
             }
         }
@@ -134,7 +147,9 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
             'service' => $service,
             'prices' => $prices,
             'newPrice' => $newPrice,
-            'tab' => $tab]);
+            'tab' => $tab,
+            'seo' => $seo
+        ]);
     }
 
     public function actionDelete($id)

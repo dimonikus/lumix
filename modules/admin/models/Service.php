@@ -3,6 +3,7 @@
 namespace app\modules\admin\models;
 
 use app\models\Images;
+use app\models\MetaInfo;
 use app\models\Price;
 use Yii;
 use app\modules\admin\behaviors\SluggableBehavior;
@@ -25,6 +26,10 @@ use yii\helpers\BaseInflector;
  */
 class Service extends \yii\db\ActiveRecord
 {
+    /**
+     * @var MetaInfo
+     */
+    private $_metaInfo;
     /**
      * @inheritdoc
      */
@@ -123,5 +128,61 @@ class Service extends \yii\db\ActiveRecord
         ];
 
         return ArrayHelper::merge(parent::behaviors(), $behaviors);
+    }
+
+    /**
+     * @return MetaInfo|array|null|\yii\db\ActiveRecord
+     */
+    public function getMetaInfo()
+    {
+        if (empty($this->_metaInfo)) {
+            $this->_metaInfo = MetaInfo::find()
+                ->andWhere(['model_name' => self::className(), 'model_id' => $this->id])
+                ->one();
+        }
+        if (empty($this->_metaInfo)) {
+            $meta = new MetaInfo();
+            $meta->model_name = self::className();
+            $meta->model_id = $this->id;
+            $this->_metaInfo = $meta;
+        }
+
+        return $this->_metaInfo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMetaTitle()
+    {
+        $title = $this->getMetaInfo();
+        return $title->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMetaDescription()
+    {
+        $description = $this->getMetaInfo();
+        return $description->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMetaKeywords()
+    {
+        $keywords = $this->getMetaInfo();
+        return $keywords->keywords;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMetaRobots()
+    {
+        $robots = $this->getMetaInfo();
+        return $robots->robots;
     }
 }

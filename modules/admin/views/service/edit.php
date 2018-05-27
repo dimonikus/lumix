@@ -1,5 +1,6 @@
 <?php
 /* @var $service \app\modules\admin\models\Service */
+/* @var $seo \app\models\MetaInfo */
 /* @var $tab string */
 //https://github.com/MihailDev/yii2-elfinder
 //https://github.com/MihailDev/yii2-ckeditor
@@ -39,7 +40,7 @@ echo TabsX::widget([
         ],
         [
             'label' => '<i class="glyphicon glyphicon-globe"></i> SEO',
-            'content' => $this->render('_tab_seo', ['service' => $service]),
+            'content' => $this->render('_tab_seo', ['seo' => $seo, 'service' => $service]),
             'active' => $tab == 'seo'
         ],
     ],

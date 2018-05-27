@@ -122,6 +122,11 @@ class MetaTagManager
         return isset($this->data[$name]) ? $this->data[$name] : null;
     }
 
+    /**
+     * @param null $model
+     * @param array $data
+     * @param array $options
+     */
     public static function registerMetaTags($model = null, $data = [], $options = [])
     {
         $manager = new self($model, $data, $options);
@@ -169,5 +174,15 @@ class MetaTagManager
             \Yii::$app->view->registerMetaTag(['name' => $name, 'content' => $content],
                 'robots');
         }
+    }
+
+    public static function getRobotsList()
+    {
+        return [
+            self::ROBOTS_INDEX_FOLLOW => 'index, follow',
+            self::ROBOTS_NOINDEX_FOLLOW => 'noindex, follow',
+            self::ROBOTS_INDEX_NOFOLLOW => 'index, nofollow',
+            self::ROBOTS_NOINDEX_NOFOLLOW => 'noindex, nofollow',
+        ];
     }
 }
