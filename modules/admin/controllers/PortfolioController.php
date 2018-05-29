@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\models\Images;
+use app\models\MetaInfo;
 use app\modules\admin\models\ImageHelper;
 use Yii;
 use app\models\News;
@@ -39,6 +40,20 @@ class PortfolioController extends AdminController
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionSeo($id)
+    {
+        $image = new Images();
+        $image->service_id = $id;
+        $seo = $image->getMetaInfo();
+        if ($seo->load(\Yii::$app->request->post()) && $seo->save()) {
+            \Yii::$app->session->setFlash('success', 'Изменения успешно сохранены!');
+
+            return $this->redirect('index');
+        }
+
+        return $this->render('seo', ['seo' => $seo]);
     }
 
     public function actionView($id)

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\MetaTagManager;
 use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
@@ -29,6 +30,7 @@ class PortfolioController extends FrontendController
          */
         $model = Service::findOne(['url' => $slug]);
         $images = $model->portfolio ? $model->portfolio : [];
+        MetaTagManager::registerMetaTags(empty($images) ? null : current($images));
 
         return $this->render('view', ['images' => $images]);
     }

@@ -26,3 +26,6 @@ $this->title = 'Портфолио';
 <?= Html::button('наполнить', ['class' => 'btn btn-primary',
     'onClick' => 'js: window.location.href = "/admin/portfolio/view?id=" + $("#portfolio_id").val()'
 ]) ?>
+<?= Html::button('seo', ['class' => 'btn btn-primary', 'style' => 'margin-left: 10px',
+    'onClick' => 'js: window.location.href = "/admin/portfolio/seo?id=" + $("#portfolio_id").val()'
+]) ?>
