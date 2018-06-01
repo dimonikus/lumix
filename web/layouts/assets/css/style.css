@@ -681,12 +681,12 @@ border-radius: 50%;}
 /*-------------------------
   9.8 Contact us
 ---------------------------*/
-.contact-info { background-color: #cda34d; color: #fff; }
-.contact-info ul { padding-left: 0px; }
+.contact-info { background-color: #ffffff; color: #C12D17; }
+.contact-info ul { padding-left: 0; padding-right: 0; }
 .contact-info li { position: relative; padding-left: 70px; margin-bottom: 30px; border-bottom: 1px solid #b69042; padding-bottom: 29px; }
 .contact-info li:last-child { border-bottom: none; }
 .contact-info li i { display: block; position: absolute; left: 0; /* font-size: 50px; */ /* text-align: center; */ 
-color: #fff; /* bottom: 0px; */ }
+color: #C12D17; /* bottom: 0px; */ }
 .map { height: 400px; }
 .contact-social { text-align: center; }
 .contact-social { }

@@ -9,8 +9,11 @@ AddCharset utf-8 *
 
 RewriteEngine on
 
-#RewriteCond %{HTTP_HOST} ^www.pampik1113\.local$ [NC]
-#RewriteRule ^(.*)$ http://pampik1113.local/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www.lumixstudio.com.ua$ [NC]
+RewriteRule ^(.*)$ https://lumixstudio.com.ua/$1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^(.*)//(.*)$
+RewriteRule . %1/%2 [R=301,L]
 
 # if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
