@@ -86,6 +86,7 @@ $config = [
                 'service/<slug>' => 'service/view',
                 'portfolio' => 'portfolio/index',
                 'portfolio/<slug>' => 'portfolio/view',
+                'products' => 'products/index',
                 'admin/login' => 'admin/admin/login',
             ],
         ],

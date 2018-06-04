@@ -6,6 +6,7 @@ use app\models\BlockMain;
 use app\models\ContactPage;
 use app\models\Feedback;
 use app\models\MainBlocks;
+use app\models\MetaTagManager;
 use app\modules\admin\models\Service;
 use Yii;
 use yii\filters\AccessControl;
@@ -29,6 +30,7 @@ class SiteController extends FrontendController
             ->where(['checkbox' => MainBlocks::CHECKBOX_CHECKED])
             ->orderBy('index asc')
             ->all();
+        MetaTagManager::registerMetaTags(null, ['canonical' => false]);
 
         return $this->render('index', [
             'model' => $model,
@@ -46,6 +48,7 @@ class SiteController extends FrontendController
         if (!$model = ContactPage::find()->one()) {
             $model = new ContactPage();
         }
+        MetaTagManager::registerMetaTags($model);
 
         return $this->render('contact', [
             'model' => $model,

@@ -81,13 +81,21 @@ class MetaTagManager
     {
         //canonical
         $canonical = $this->getData('canonical');
-        if (!$canonical && $this->model && isset($this->model->url)) {
+        if ($canonical === null) {
             $controller = \Yii::$app->controller;
-            $canonical = \Yii::$app->urlManager->createAbsoluteUrl(
-                [
-                    '/' . $controller->id . '/' . $controller->action->id,
-                    'slug' => $this->model->url
-                ]);
+            $queryParams = \Yii::$app->request->queryParams;
+            if (empty($queryParams['slug'])) {
+                $canonical = \Yii::$app->urlManager->createAbsoluteUrl(
+                    [
+                        '/' . $controller->id . '/' . $controller->action->id,
+                    ]);
+            } else {
+                $canonical = \Yii::$app->urlManager->createAbsoluteUrl(
+                    [
+                        '/' . $controller->id . '/' . $controller->action->id,
+                        'slug' => $queryParams['slug']
+                    ]);
+            }
         }
 
         return $canonical;
