@@ -1,4 +1,14 @@
+<?php
+$this->params['breadcrumbs'][] = [
+    'label' => Yii::t('app', 'News'), // название ссылки
+    'url' => ['/news'] // сама ссылка
+];
+$this->params['breadcrumbs'][] = ['label' => $news->name];
+?>
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'News')]) ?>
+<?= \app\widgets\pageBreadcrumbWidget::widget([
+    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+]) ?>
 
 <div class="space-medium">
     <div class="container">

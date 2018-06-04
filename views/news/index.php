@@ -6,6 +6,7 @@ $newsPath = Yii::$app->urlManager->createUrl('/news/index') . '/';
 ?>
 
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'News')]) ?>
+<?= \app\widgets\pageBreadcrumbWidget::widget(['links' => [Yii::t('app', 'News')]]) ?>
 
 <div class="space-medium">
     <div class="container">

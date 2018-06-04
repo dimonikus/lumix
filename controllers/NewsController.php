@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\models\MetaTagManager;
 use app\models\News;
 use app\modules\admin\models\Service;
 use yii\helpers\ArrayHelper;
@@ -34,6 +35,8 @@ class NewsController extends FrontendController
         }
         $news = $query->all();
 
+        MetaTagManager::registerMetaTags();
+
         return $this->render('index', compact('news'));
     }
 
@@ -45,6 +48,7 @@ class NewsController extends FrontendController
         $news = News::find()->where(['status' => News::STATUS_PUBLISHED, 'url' => $slug])->one();
         $service = Service::find()->orderBy('index asc')->all();
         $categories = ArrayHelper::map($service, 'id', 'name');
+        MetaTagManager::registerMetaTags($news);
 
         return $this->render('view', compact('news', 'categories'));
     }

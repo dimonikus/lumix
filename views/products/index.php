@@ -3,7 +3,7 @@
 /* @var $product \app\models\Products */
 ?>
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'Products')]) ?>
-
+<?= \app\widgets\pageBreadcrumbWidget::widget(['links' => [Yii::t('app', 'Products')]]) ?>
 <div class="space-medium">
     <div class="container">
         <div class="row row_flex">
