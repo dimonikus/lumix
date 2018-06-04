@@ -4,8 +4,16 @@
 
 $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
+$this->params['breadcrumbs'][] = [
+    'label' => Yii::t('app', 'Service List'), // название ссылки
+    'url' => ['/service'] // сама ссылка
+];
+$this->params['breadcrumbs'][] = ['label' => $service->name];
 ?>
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => $service->name]) ?>
+<?= \app\widgets\pageBreadcrumbWidget::widget([
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
 <div class="space-medium">
     <div class="container">
         <div class="row">

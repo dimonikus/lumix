@@ -6,6 +6,7 @@ $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
 $classAndStyle = 'class="not-visible-price" style="display: none"';
 ?>
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'Pricing')]) ?>
+<?= \app\widgets\pageBreadcrumbWidget::widget(['links' => [Yii::t('app', 'Pricing')]]) ?>
 <div class="space-medium">
     <div class="container">
         <div class="row row_flex">

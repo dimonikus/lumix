@@ -5,6 +5,7 @@
 ?>
 
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'Portfolio')]) ?>
+<?= \app\widgets\pageBreadcrumbWidget::widget(['links' => [Yii::t('app', 'Portfolio')]]) ?>
 
 <div class="space-medium">
     <div class="container">

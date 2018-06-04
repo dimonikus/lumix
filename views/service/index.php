@@ -5,6 +5,7 @@ $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->ba
 $servicePath = Yii::$app->urlManager->createUrl('/service/index') . '/';
 ?>
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'Service List')]) ?>
+<?= \app\widgets\pageBreadcrumbWidget::widget(['links' => [Yii::t('app', 'Service List')]]) ?>
 <div class="space-medium">
     <div class="container">
         <div class="row row_flex">

@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $assetPath = Yii::$app->assetManager->getBundle('app\assets\AppAsset', true)->baseUrl;
 ?>
 <?= \app\widgets\HeaderCaptionWidget::widget(['heading_h1' => Yii::t('app', 'Contact')]) ?>
+<?= \app\widgets\pageBreadcrumbWidget::widget(['links' => [Yii::t('app', 'Contact')]]) ?>
 <div class="space-medium">
     <div class="container">
         <div>
