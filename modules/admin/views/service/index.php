@@ -3,6 +3,7 @@
 /* @var $services object */
 /* @var $service \app\modules\admin\models\Service */
 /* @var $newService \app\modules\admin\models\Service */
+/* @var $seo \app\models\MetaInfo */
 /* manual - http://demos.krajee.com/sortable-input */
 use kartik\sortinput\SortableInput;
 use yii\bootstrap\Modal;
@@ -58,6 +59,15 @@ if (!empty($items)) {
         'items' => $items,
         'hideInput' => true,
     ]);
+    echo Html::beginTag('div', ['class' => 'alert alert-info']);
+    echo Html::tag('h2', 'SEO (инфомация для гугл)');
+    echo $form->field($seo, 'model_id')->hiddenInput()->label(false);
+    echo $form->field($seo, 'model_name')->hiddenInput()->label(false);
+    echo $form->field($seo, 'title');
+    echo $form->field($seo, 'keywords');
+    echo $form->field($seo, 'description');
+    echo $form->field($seo, 'robots')->dropDownList(\app\models\MetaTagManager::getRobotsList());
+    echo Html::endTag('div');
     echo Html::submitButton('Сохранить', ['class' => 'btn btn-primary']);
     ActiveForm::end();
 }

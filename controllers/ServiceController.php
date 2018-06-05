@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\MetaInfo;
 use app\models\MetaTagManager;
 use app\modules\admin\models\Service;
 use Yii;
@@ -21,7 +22,11 @@ class ServiceController extends FrontendController
     public function actionIndex()
     {
         $services = Service::find()->orderBy('index asc')->all();
-        MetaTagManager::registerMetaTags();
+        $seo = MetaInfo::find()
+            ->andWhere(['model_name' => Service::className(), 'model_id' => 0])
+            ->asArray()
+            ->one();
+        MetaTagManager::registerMetaTags(null, (!empty($seo) ? $seo : []));
 
         return $this->render('index', compact('services'));
     }

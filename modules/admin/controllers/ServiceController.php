@@ -25,8 +25,16 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
     {
         $newService = new Service();
         $services = Service::find()->orderBy('index asc')->all();
+        $seo = MetaInfo::find()
+            ->andWhere(['model_name' => Service::className(), 'model_id' => 0])
+            ->one();
+        if (!$seo) {
+            $seo = new MetaInfo();
+            $seo->model_name = Service::className();
+            $seo->model_id = 0;
+        }
 
-        return $this->render('index', ['newService' => $newService, 'services' => $services]);
+        return $this->render('index', ['newService' => $newService, 'services' => $services, 'seo' => $seo]);
     }
 
     public function actionAddNewService()
@@ -102,6 +110,15 @@ class ServiceController extends \app\modules\admin\controllers\AdminController
         $index = explode(',', $index);
         $index = array_flip($index);
         $services = Service::find()->all();
+        $seo = MetaInfo::find()
+            ->andWhere(['model_name' => Service::className(), 'model_id' => 0])
+            ->one();
+        if (!$seo) {
+            $seo = new MetaInfo();
+            $seo->model_name = Service::className();
+            $seo->model_id = 0;
+        }
+        if ($seo->load(\Yii::$app->request->post())) $seo->save();
 
         foreach ($services as $service) {
             $service->index = $index[$service->id];

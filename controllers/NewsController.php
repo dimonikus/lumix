@@ -35,7 +35,7 @@ class NewsController extends FrontendController
         }
         $news = $query->all();
 
-        MetaTagManager::registerMetaTags();
+        MetaTagManager::registerMetaTags(null, ['robots' => MetaTagManager::ROBOTS_NOINDEX_NOFOLLOW]);
 
         return $this->render('index', compact('news'));
     }
@@ -48,7 +48,7 @@ class NewsController extends FrontendController
         $news = News::find()->where(['status' => News::STATUS_PUBLISHED, 'url' => $slug])->one();
         $service = Service::find()->orderBy('index asc')->all();
         $categories = ArrayHelper::map($service, 'id', 'name');
-        MetaTagManager::registerMetaTags($news);
+        MetaTagManager::registerMetaTags($news, ['robots' => MetaTagManager::ROBOTS_NOINDEX_NOFOLLOW]);
 
         return $this->render('view', compact('news', 'categories'));
     }
