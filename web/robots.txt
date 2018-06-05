@@ -4,4 +4,4 @@ Disallow: /filemanager/
 Disallow: /layouts/
 
 Host: https://lumixstudio.com.ua
-#Sitemap: https://lumixstudio.com.ua/sitemap.xml
+Sitemap: https://lumixstudio.com.ua/sitemap.xml
