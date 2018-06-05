@@ -1,13 +1,20 @@
 AddDefaultCharset UTF-8
 AddCharset utf-8 *
 
-#Options +FollowSymLinks
 #IndexIgnore */*
 #RewriteEngine on
 
 #RewriteBase / #my add
 
 RewriteEngine on
+# if a directory or a file exists, use it directly
+Options +FollowSymLinks
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.+) index.php [L]
+# otherwise forward it to index.php
+#RewriteRule . index.php
 
 RewriteCond %{HTTP_HOST} ^www.lumixstudio.com.ua$ [NC]
 RewriteRule ^(.*)$ https://lumixstudio.com.ua/$1 [R=301,L]
@@ -15,9 +22,3 @@ RewriteRule ^(.*)$ https://lumixstudio.com.ua/$1 [R=301,L]
 RewriteCond %{REQUEST_URI} ^(.*)//(.*)$
 RewriteRule . %1/%2 [R=301,L]
 
-# if a directory or a file exists, use it directly
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# otherwise forward it to index.php
-RewriteRule . index.php

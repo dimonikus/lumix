@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Allow:/
+Disallow: /filemanager/
+Disallow: /layouts/
+
+Host: https://lumixstudio.com.ua
+#Sitemap: https://lumixstudio.com.ua/sitemap.xml

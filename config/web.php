@@ -30,7 +30,7 @@ $config = [
             ],
         ],
         'assetManager' => [
-            'linkAssets' => true,
+            'linkAssets' => false,
             'bundles' => [
                 'dosamigos\google\maps\MapAsset' => [
                     'options' => [
@@ -105,14 +105,14 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+//        'allowedIPs' => ['176.36.85.149', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+//        'allowedIPs' => ['176.36.85.149', '::1'],
     ];
 }
 
