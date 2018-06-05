@@ -83,6 +83,7 @@ $config = [
                 'service' => 'service/index',
                 'price' => 'service/price',
                 'contact' => 'site/contact',
+                'sitemap' => 'site/sitemap',
                 'service/<slug>' => 'service/view',
                 'portfolio' => 'portfolio/index',
                 'portfolio/<slug>' => 'portfolio/view',

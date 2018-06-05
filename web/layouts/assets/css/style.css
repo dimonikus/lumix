@@ -1037,10 +1037,35 @@ opacity: .5; }
 	.comment-header{ margin-bottom:0px;}
 }
 
+.my-sitemap ul {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 40px;
+}
 
-	
+.sitemap ul {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 40px;
+}
 
+.sitemap li {
+    margin-left: 50px;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
 
+.sitemap ul li a {
+    /*color: #0081ab*/
+}
 
 
 
