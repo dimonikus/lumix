@@ -231,6 +231,12 @@ $contact = \app\models\ContactPage::find()->one();
                                 <?= Yii::t('app', 'Contact') ?>
                             </a>
                         </li>
+                        <li>
+                            <i class="fa fa-caret-right"></i>
+                            <a href="<?= Url::to(['/site/sitemap']) ?>">
+                                Карта сайта
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
