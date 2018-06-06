@@ -39,6 +39,28 @@ $this->params['breadcrumbs'][] = ['label' => $service->name];
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                         <div class="sidenav pinside30 mb30">
+                            <div class="text-center mb30">
+                            <div class="social">
+                                <a href="https://www.facebook.com/sharer.php?u=<?= $FBurl ?>"
+                                   title="Facebook"
+                                   class="sprite-side social-icon-link social-icon-link-middle-fb"
+                                   target="_blank">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="https://plus.google.com/share?url=<?= $FBurl ?>"
+                                   title="Google"
+                                   class="sprite-side social-icon-link social-icon-link-middle-fb"
+                                   target="_blank">
+                                    <i class="fa fa-google"></i>
+                                </a>
+                                <a href="https://twitter.com/share?url=<?= $FBurl ?>"
+                                   title="Twitter"
+                                   class="sprite-side social-icon-link social-icon-link-middle-fb"
+                                   target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                            </div>
                             <ul class="listnone sidenav-outline">
                                 <?php foreach ($serviceMenu as $url => $name): ?>
                                     <li>
@@ -75,26 +97,6 @@ $this->params['breadcrumbs'][] = ['label' => $service->name];
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
-                                    <div class="social">
-                                        <a href="https://www.facebook.com/sharer.php?u=<?= $FBurl ?>"
-                                           title="Facebook"
-                                           class="sprite-side social-icon-link social-icon-link-middle-fb"
-                                           target="_blank">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                        <a href="https://plus.google.com/share?url=<?= $FBurl ?>"
-                                           title="Google"
-                                           class="sprite-side social-icon-link social-icon-link-middle-fb"
-                                           target="_blank">
-                                            <i class="fa fa-google"></i>
-                                        </a>
-                                        <a href="https://twitter.com/share?url=<?= $FBurl ?>"
-                                           title="Twitter"
-                                           class="sprite-side social-icon-link social-icon-link-middle-fb"
-                                           target="_blank">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
