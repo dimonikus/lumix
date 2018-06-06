@@ -1063,13 +1063,7 @@ opacity: .5; }
     text-align: -webkit-match-parent;
 }
 
-.sitemap ul li a {
-    /*color: #0081ab*/
+.error-title {
+    font-size: 300px;
+    margin-bottom: 130px;
 }
-
-
-
-
-
-
-

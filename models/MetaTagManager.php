@@ -143,6 +143,7 @@ class MetaTagManager
         $keywords = $manager->creteMetaKeywords();
         $canonical = $manager->createCanonical();
         $robots = $manager->creteMetaRobots();
+        $type = 'website';
 
         if ($keywords) {
             \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $keywords],
@@ -151,11 +152,21 @@ class MetaTagManager
         if ($description) {
             \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $description],
                 'description');
+            \Yii::$app->view->registerMetaTag(['property' => 'og:description', 'content' => $description],
+                'og:description');
         }
         if ($canonical) {
             \Yii::$app->view->registerLinkTag(['rel' => 'canonical', 'href' => $canonical],
                 'canonical');
+            \Yii::$app->view->registerMetaTag(['property' => 'og:url', 'content' => $canonical],
+                'og:url');
         }
+        if ($type) {
+            \Yii::$app->view->registerMetaTag(['property' => 'og:type', 'content' => $type],
+                'og:type');
+        }
+        \Yii::$app->view->registerMetaTag(['property' => 'og:site_name', 'content' => 'lumixstudio.com.ua'],
+            'og:site_name');
         if (is_int($robots)) {
             self::registerMetaRobots($robots);
         }
